@@ -1,10 +1,24 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
   return (
-    <div className="absolute top-0 left-0 w-screen h-screen flex items-center justify-center">
-      <div className="text-8xl font-bold">Hey!</div>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/login">
+          <LoginPage />
+        </Route>
+        <Route path="/register">
+          <RegisterPage />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
