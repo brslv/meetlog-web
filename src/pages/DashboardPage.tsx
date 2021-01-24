@@ -1,9 +1,9 @@
-import Header from '../components/Header'
+import SideNav from '../components/SideNav'
 
 export default function DashboardPage() {
   return (
     <div>
-      <Header />
+      <SideNav />
     </div>
   )
 }
