@@ -31,7 +31,7 @@ export default function MeetingsList() {
   ]
 
   return (
-    <div className="grid grid-cols-4 gap-4">
+    <div className="grid  grid-cols-4 gap-2">
       {meetings.map((meeting) => {
         return <MeetingCard key={meeting.id} data={meeting} />
       })}
