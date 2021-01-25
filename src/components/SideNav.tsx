@@ -85,6 +85,7 @@ export default function SideNav() {
       <Modal
         onClose={() => setIsCreatingMeeting(false)}
         open={isCreatingMeeting}
+        style={{ minWidth: 320 }}
       >
         <Title>New meeting</Title>
         <MeetingForm onSubmit={(data) => console.log({ data })} />
