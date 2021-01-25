@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 const cls =
-  'px-4 py-1.5 bg-indigo-500 hover:bg-indigo-600 rounded text-white focus:ring focus:outline-none'
+  'px-4 py-1.5 bg-indigo-500 dark:bg-indigo-400 hover:bg-indigo-600 dark:hover:bg-indigo-500 rounded text-white dark:text-gray-900 focus:ring focus:outline-none'
 
 export function LinkButton({
   children,
