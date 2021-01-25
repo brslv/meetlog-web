@@ -67,7 +67,7 @@ export default function SideNav() {
   const [isCreatingMeeting, setIsCreatingMeeting] = useState(false)
 
   return (
-    <div className="fixed top-0 left-0 w-20 h-screen bg-white dark:bg-gray-900 flex flex-col items-center justify-between py-4 border-r border-gray-300 dark:border-gray-700">
+    <div className="z-10 fixed top-0 left-0 w-20 h-screen bg-white dark:bg-gray-900 flex flex-col items-center justify-between py-4 border-r border-gray-300 dark:border-gray-700">
       <div className="flex flex-col items-center">
         <Link to="/">
           <Logo className="cursor-pointer mb-8" />
