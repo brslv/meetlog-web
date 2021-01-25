@@ -5,27 +5,27 @@ export default function MeetingsList() {
   const meetings = [
     {
       id: 1,
-      title: 'This is the meeting title',
+      title: 'Registration flow',
       excerpt: 'Lorem ipsum dolor sit amet...',
     },
     {
       id: 2,
-      title: 'This is the meeting title',
+      title: 'Referral mechanism and UX',
       excerpt: 'Lorem ipsum dolor sit amet...',
     },
     {
       id: 3,
-      title: 'This is the meeting title',
+      title: 'SEO meeting',
       excerpt: 'Lorem ipsum dolor sit amet...',
     },
     {
       id: 4,
-      title: 'This is the meeting title',
+      title: 'Third party integrations meeting',
       excerpt: 'Lorem ipsum dolor sit amet...',
     },
     {
       id: 5,
-      title: 'This is the meeting title',
+      title: 'Weekly product meeting',
       excerpt: 'Lorem ipsum dolor sit amet...',
     },
   ]
