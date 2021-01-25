@@ -97,7 +97,7 @@ export default function SideNav() {
           <img
             alt="User avatar"
             src="https://randomuser.me/api/portraits/lego/2.jpg"
-            className="w-12 h-12 rounded-full border border-gray-300 hover:border-indigo-500 cursor-pointer"
+            className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-400 cursor-pointer"
           />
         </SideNavItem>
       </div>
