@@ -9,7 +9,7 @@ const Context = createContext<Ctx | null>(null)
 
 const localStorageKey = 'darkMode'
 const darkModeClass = 'dark'
-const body = document.body
+const body = document.getElementsByTagName('html')[0]
 
 export default function DarkModeProvider({
   children,

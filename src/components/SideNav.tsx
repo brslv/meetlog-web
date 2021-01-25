@@ -53,7 +53,7 @@ function SideNavItem({
         }}
       >
         <div
-          className="bg-white rounded p-2 border border-gray-300 whitespace-nowrap"
+          className="bg-white dark:bg-gray-800 rounded p-2 border border-gray-300 dark:border-gray-700 whitespace-nowrap"
           style={{ width: 'auto' }}
         >
           {hint}
@@ -67,7 +67,7 @@ export default function SideNav() {
   const [isCreatingMeeting, setIsCreatingMeeting] = useState(false)
 
   return (
-    <div className="fixed top-0 left-0 w-20 h-screen bg-white flex flex-col items-center justify-between py-4 border-r border-gray-300">
+    <div className="fixed top-0 left-0 w-20 h-screen bg-white dark:bg-gray-800 flex flex-col items-center justify-between py-4 border-r border-gray-300 dark:border-gray-700">
       <div className="flex flex-col items-center">
         <Link to="/">
           <Logo className="cursor-pointer mb-8" />
@@ -76,16 +76,16 @@ export default function SideNav() {
           hint="Create meeting"
           onClick={() => setIsCreatingMeeting(true)}
         >
-          <AddIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
+          <AddIcon className="hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer w-7 h-7" />
         </SideNavItem>
         <Link to="/d">
           <SideNavItem hint="Dashboard">
-            <HomeIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
+            <HomeIcon className="hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer w-7 h-7" />
           </SideNavItem>
         </Link>
         <Link to="/">
           <SideNavItem hint="Settings">
-            <SettingsIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
+            <SettingsIcon className="hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer w-7 h-7" />
           </SideNavItem>
         </Link>
       </div>
