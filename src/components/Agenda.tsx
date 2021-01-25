@@ -8,7 +8,7 @@ export default function Agenda() {
   const [isAgendaOpen, setIsAgendaOpen] = useState(false)
 
   return (
-    <div className="bg-white dark:bg-gray-900 border-b border-gray-300 dark:border-gray-700">
+    <div className="bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
       <Container>
         <div
           className="flex justify-between items-center cursor-pointer"

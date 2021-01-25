@@ -17,7 +17,7 @@ export default function MeetingInputList({
           return (
             <div
               key={input.id}
-              className="p-4 bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 mt-4 rounded"
+              className="p-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 mt-4 rounded"
             >
               {input.text}
             </div>
