@@ -11,7 +11,7 @@ export default function Title({
   return (
     <div
       className={cn({
-        'text-xs inline-block text-gray-600 uppercase mb-4': true,
+        'text-xs font-medium inline-block text-gray-600 uppercase mb-4': true,
         'bg-gray-200 rounded-full px-4 py-1.5': bg,
       })}
     >

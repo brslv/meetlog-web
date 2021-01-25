@@ -18,17 +18,21 @@ function SideNavItem({
   children,
   hint,
   onClick,
+  pushY = true,
+  hintLeftSpacing = 10,
 }: {
   children: React.ReactNode
   hint: string
   onClick?: () => void
+  pushY?: boolean
+  hintLeftSpacing?: number
 }) {
   const [isHintHidden, setIsHintHidden] = useState<boolean>(true)
   const onMouseEnter = () => setIsHintHidden(false)
   const onMouseLeave = () => setIsHintHidden(true)
 
   return (
-    <div className="relative my-4">
+    <div className={cn({ relative: true, 'my-4': pushY })}>
       <div
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
@@ -37,7 +41,10 @@ function SideNavItem({
         {children}
       </div>
       <div
-        className={cn({ 'absolute ml-10': true, hidden: isHintHidden })}
+        className={cn({
+          [`absolute ml-${hintLeftSpacing}`]: true,
+          hidden: isHintHidden,
+        })}
         style={{
           top: '50%',
           transform: `translateY(-50%)`,
@@ -74,13 +81,13 @@ export default function SideNav() {
           <SettingsIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
         </SideNavItem>
       </div>
-      <div>
+      <SideNavItem hint="User profile" hintLeftSpacing={14}>
         <img
           alt="User avatar"
           src="https://randomuser.me/api/portraits/lego/2.jpg"
           className="w-12 h-12 rounded-full border border-gray-300 hover:border-indigo-500 cursor-pointer"
         />
-      </div>
+      </SideNavItem>
 
       <Modal
         onClose={() => setIsCreatingMeeting(false)}
