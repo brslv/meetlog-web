@@ -35,7 +35,7 @@ function SideNavItem({
         }}
       >
         <div
-          className="bg-white rounded p-2 border border-gray-300"
+          className="bg-white rounded p-2 border border-gray-300 whitespace-nowrap"
           style={{ width: 'auto' }}
         >
           {hint}
