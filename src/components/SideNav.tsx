@@ -7,10 +7,8 @@ import {
 } from 'react-icons/ri'
 import cn from '../utils/cn'
 import Modal from './core/Modal'
-import Button from './core/Button'
-import Input from './core/Input'
-import Label from './core/Label'
 import Title from './core/Title'
+import MeetingForm from './MeetingForm'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>
@@ -89,14 +87,7 @@ export default function SideNav() {
         open={isCreatingMeeting}
       >
         <Title>New meeting</Title>
-        <form>
-          <Label text="Title">
-            <Input name="title" type="text" />
-          </Label>
-          <div className="mt-4">
-            <Button type="submit">Create</Button>
-          </div>
-        </form>
+        <MeetingForm onSubmit={(data) => console.log({ data })} />
       </Modal>
     </div>
   )

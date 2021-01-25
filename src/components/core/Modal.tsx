@@ -29,8 +29,7 @@ export default function Modal({
         {children}
       </div>
       <div
-        className="absolute top-0 left-0 w-screen h-screen"
-        style={{ background: `rgba(0,0,0,0.15)` }}
+        className="absolute top-0 left-0 w-screen h-screen bg-gray-500 bg-opacity-20"
         onClick={onClose}
       />
     </div>
