@@ -8,13 +8,17 @@ import {
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
+import MeetingPage from './pages/MeetingPage'
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path="/dashboard">
+        <Route path="/d">
           <DashboardPage />
+        </Route>
+        <Route path="/m/:id">
+          <MeetingPage />
         </Route>
         <Route path="/login">
           <LoginPage />
@@ -22,7 +26,7 @@ function App() {
         <Route path="/register">
           <RegisterPage />
         </Route>
-        <Redirect to="/dashboard" />
+        <Redirect to="/d" />
       </Switch>
     </Router>
   )

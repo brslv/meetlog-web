@@ -9,6 +9,7 @@ import cn from '../utils/cn'
 import Modal from './core/Modal'
 import Title from './core/Title'
 import MeetingForm from './MeetingForm'
+import { Link } from 'react-router-dom'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>
@@ -74,14 +75,18 @@ export default function SideNav() {
         >
           <AddIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
         </SideNavItem>
-        <SideNavItem hint="Dashboard">
-          <HomeIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
-        </SideNavItem>
-        <SideNavItem hint="Settings">
-          <SettingsIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
-        </SideNavItem>
+        <Link to="/d">
+          <SideNavItem hint="Dashboard">
+            <HomeIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
+          </SideNavItem>
+        </Link>
+        <Link to="/">
+          <SideNavItem hint="Settings">
+            <SettingsIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
+          </SideNavItem>
+        </Link>
       </div>
-      <SideNavItem hint="Profile settings" hintLeftSpacing={14}>
+      <SideNavItem hint="Profile settings" hintLeftSpacing={14} pushY={false}>
         <img
           alt="User avatar"
           src="https://randomuser.me/api/portraits/lego/2.jpg"
