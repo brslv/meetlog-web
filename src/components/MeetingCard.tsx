@@ -17,7 +17,9 @@ export default function MeetingCard({ data }: { data: Meeting }) {
       <div className="flex justify-between mt-4">
         <div />
 
-        <Button type="button">Open</Button>
+        <Button to="/m/1" type="button">
+          Open
+        </Button>
       </div>
     </div>
   )

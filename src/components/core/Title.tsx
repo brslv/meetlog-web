@@ -14,7 +14,7 @@ export default function Title({
     <div className={cn({ 'mb-4': pushBottom })}>
       <span
         className={cn({
-          'text-xs font-medium text-gray-600 uppercase': true,
+          'select-none text-xs font-medium text-gray-600 uppercase': true,
           'bg-gray-200 rounded-full px-4 py-1.5': bg,
         })}
       >
