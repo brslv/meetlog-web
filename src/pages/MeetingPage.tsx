@@ -2,33 +2,32 @@ import Page from '../components/core/Page'
 import SideNav, { SideNavPusher } from '../components/SideNav'
 import Title from '../components/core/Title'
 import { Container } from '../components/core/Container'
-import { ArrowDownIcon, ArrowUpIcon } from '../toolkit'
-import cn from '../utils/cn'
+import Agenda from '../components/Agenda'
+import MeetingInput from '../components/MeetingInput'
+import MeetingInputList from '../components/MeetingInputList'
 import { useState } from 'react'
 
 export default function MeetingPage() {
-  const [isAgendaOpen, setIsAgendaOpen] = useState(true)
+  const [inputs] = useState([
+    { id: 1, text: 'Lorem ipsum dolor sit amet' },
+    { id: 2, text: 'Lorem ipsum dolor sit amet' },
+    { id: 3, text: 'Lorem ipsum dolor sit amet' },
+  ])
+
   return (
     <Page>
       <SideNav />
       <SideNavPusher>
         <div className="h-screen grid grid-cols-2">
-          <div className="border-r border-gray-300 dark:border-gray-700">
-            <div className="bg-white dark:bg-gray-900 border-b border-gray-300 dark:border-gray-700">
-              <Container>
-                <div
-                  className="flex justify-between items-center cursor-pointer"
-                  onClick={() => setIsAgendaOpen((prev) => !prev)}
-                >
-                  <Title bg pushBottom={false}>
-                    Agenda
-                  </Title>
-                  {isAgendaOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
-                </div>
-                <div className={cn({ 'mt-4': true, hidden: !isAgendaOpen })}>
-                  This is my agenda
-                </div>
-              </Container>
+          <div className="flex flex-col relative border-r border-gray-300 dark:border-gray-700">
+            <div>
+              <Agenda />
+            </div>
+            <div className="flex-1 flex justify-end flex-col">
+              <MeetingInputList inputs={inputs} />
+            </div>
+            <div>
+              <MeetingInput />
             </div>
           </div>
           <div>
