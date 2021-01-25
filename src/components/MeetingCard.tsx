@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from './Button'
 
 interface Meeting {
   id: number
@@ -15,9 +16,8 @@ export default function MeetingCard({ data }: { data: Meeting }) {
 
       <div className="flex justify-between mt-4">
         <div />
-        <button className="px-4 py-1.5 bg-indigo-500 hover:bg-indigo-600 rounded text-white focus:ring focus:outline-none">
-          Open
-        </button>
+
+        <Button type="button">Open</Button>
       </div>
     </div>
   )
