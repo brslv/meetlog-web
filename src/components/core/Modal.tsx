@@ -23,7 +23,7 @@ export default function Modal({
         {...rest}
         className={cn(
           {
-            'bg-white dark:bg-gray-800 p-4 border border-gray-300 dark:border-gray-700 rounded z-10': true,
+            'bg-white dark:bg-gray-900 p-4 border border-gray-300 dark:border-gray-700 rounded z-10': true,
           },
           rest.className
         )}
@@ -31,7 +31,7 @@ export default function Modal({
         {children}
       </div>
       <div
-        className="absolute top-0 left-0 w-screen h-screen bg-gray-700 dark:bg-gray-900 opacity-20 dark:opacity-70"
+        className="absolute top-0 left-0 w-screen h-screen bg-gray-700 dark:bg-gray-800 opacity-20 dark:opacity-70"
         onClick={onClose}
       />
     </div>
