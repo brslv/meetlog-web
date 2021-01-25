@@ -8,6 +8,8 @@ import {
 import cn from '../utils/cn'
 import Modal from './Modal'
 import Button from './Button'
+import Input from './Input'
+import Label from './Label'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>
@@ -89,14 +91,9 @@ export default function SideNav() {
           New meeting
         </div>
         <form>
-          <label>
-            <div className="text-xs uppercase text-gray-500 mb-2">Title</div>
-            <input
-              name="title"
-              type="text"
-              className="px-4 py-2 rounded bg-gray-100 outline-none focus:ring"
-            />
-          </label>
+          <Label text="Title">
+            <Input name="title" type="text" />
+          </Label>
           <div className="mt-4">
             <Button type="submit">Create</Button>
           </div>
