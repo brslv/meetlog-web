@@ -6,11 +6,11 @@ import {
   RiSettingsLine as SettingsIcon,
 } from 'react-icons/ri'
 import cn from '../utils/cn'
-import Modal from './Modal'
-import Button from './Button'
-import Input from './Input'
-import Label from './Label'
-import Title from './Title'
+import Modal from './core/Modal'
+import Button from './core/Button'
+import Input from './core/Input'
+import Label from './core/Label'
+import Title from './core/Title'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>

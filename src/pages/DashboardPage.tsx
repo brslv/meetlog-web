@@ -1,7 +1,7 @@
 import SideNav, { SideNavPusher } from '../components/SideNav'
-import Page, { PageContainer } from '../components/Page'
+import Page, { PageContainer } from '../components/core/Page'
 import MeetingsList from '../components/MeetingsList'
-import Title from '../components/Title'
+import Title from '../components/core/Title'
 
 export default function DashboardPage() {
   return (
