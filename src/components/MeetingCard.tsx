@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from './core/Button'
+import { LinkButton } from './core/Button'
 
 interface Meeting {
   id: number
@@ -17,9 +17,9 @@ export default function MeetingCard({ data }: { data: Meeting }) {
       <div className="flex justify-between mt-4">
         <div />
 
-        <Button to="/m/1" type="button">
+        <LinkButton to="/m/1" type="button">
           Open
-        </Button>
+        </LinkButton>
       </div>
     </div>
   )
