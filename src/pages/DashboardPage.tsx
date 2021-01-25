@@ -9,6 +9,9 @@ export default function DashboardPage() {
         <SideNav />
         <PageContainer>
           <SideNavPusher>
+            <div className="text-xs bg-gray-200 rounded-full inline-block px-4 py-1.5 mb-4 text-gray-600 uppercase">
+              Your meetings
+            </div>
             <MeetingsList />
           </SideNavPusher>
         </PageContainer>
