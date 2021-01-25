@@ -15,7 +15,7 @@ export default function Title({
       <span
         className={cn({
           'select-none text-xs font-medium text-gray-600 dark:text-gray-400 uppercase': true,
-          'bg-gray-200 dark:bg-gray-800 rounded-full px-4 py-1.5': bg,
+          'bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-1.5': bg,
         })}
       >
         {children}

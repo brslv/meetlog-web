@@ -13,8 +13,8 @@ export default function MeetingPage() {
       <SideNav />
       <SideNavPusher>
         <div className="h-screen grid grid-cols-2">
-          <div className="border-r border-gray-300">
-            <div className="bg-white border-b border-gray-300">
+          <div className="border-r border-gray-300 dark:border-gray-700">
+            <div className="bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700">
               <Container>
                 <div
                   className="flex justify-between items-center cursor-pointer"

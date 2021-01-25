@@ -76,16 +76,16 @@ export default function SideNav() {
           hint="Create meeting"
           onClick={() => setIsCreatingMeeting(true)}
         >
-          <AddIcon className="hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer w-7 h-7" />
+          <AddIcon className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer w-7 h-7" />
         </SideNavItem>
         <Link to="/d">
           <SideNavItem hint="Dashboard">
-            <HomeIcon className="hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer w-7 h-7" />
+            <HomeIcon className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer w-7 h-7" />
           </SideNavItem>
         </Link>
         <Link to="/">
           <SideNavItem hint="Settings">
-            <SettingsIcon className="hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer w-7 h-7" />
+            <SettingsIcon className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer w-7 h-7" />
           </SideNavItem>
         </Link>
       </div>

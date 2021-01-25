@@ -9,7 +9,7 @@ export default function DarkModeToggle() {
 
   return (
     <SunIcon
-      className="hover:text-indigo-600 dark:hover:text-indigo-300 cursor-pointer w-7 h-7"
+      className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer w-7 h-7"
       onClick={onClick}
     />
   )
