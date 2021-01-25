@@ -81,7 +81,7 @@ export default function SideNav() {
           <SettingsIcon className="text-gray-800 hover:text-indigo-600 cursor-pointer w-7 h-7" />
         </SideNavItem>
       </div>
-      <SideNavItem hint="User profile" hintLeftSpacing={14}>
+      <SideNavItem hint="Profile settings" hintLeftSpacing={14}>
         <img
           alt="User avatar"
           src="https://randomuser.me/api/portraits/lego/2.jpg"
