@@ -10,6 +10,7 @@ import Modal from './Modal'
 import Button from './Button'
 import Input from './Input'
 import Label from './Label'
+import Title from './Title'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>
@@ -87,9 +88,7 @@ export default function SideNav() {
         onClose={() => setIsCreatingMeeting(false)}
         open={isCreatingMeeting}
       >
-        <div className="text-xs bg-gray-200 rounded-full inline-block px-4 py-1.5 mb-4 text-gray-600 uppercase">
-          New meeting
-        </div>
+        <Title>New meeting</Title>
         <form>
           <Label text="Title">
             <Input name="title" type="text" />
