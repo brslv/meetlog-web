@@ -10,6 +10,7 @@ import Modal from './core/Modal'
 import Title from './core/Title'
 import MeetingForm from './MeetingForm'
 import { Link } from 'react-router-dom'
+import DarkModeToggle from './darkMode/DarkModeToggle'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>
@@ -88,13 +89,18 @@ export default function SideNav() {
           </SideNavItem>
         </Link>
       </div>
-      <SideNavItem hint="Profile settings" hintLeftSpacing={14} pushY={false}>
-        <img
-          alt="User avatar"
-          src="https://randomuser.me/api/portraits/lego/2.jpg"
-          className="w-12 h-12 rounded-full border border-gray-300 hover:border-indigo-500 cursor-pointer"
-        />
-      </SideNavItem>
+      <div className="flex flex-col items-center">
+        <SideNavItem hint="Toggle dark mode">
+          <DarkModeToggle />
+        </SideNavItem>
+        <SideNavItem hint="Profile settings" hintLeftSpacing={14} pushY={false}>
+          <img
+            alt="User avatar"
+            src="https://randomuser.me/api/portraits/lego/2.jpg"
+            className="w-12 h-12 rounded-full border border-gray-300 hover:border-indigo-500 cursor-pointer"
+          />
+        </SideNavItem>
+      </div>
 
       <Modal
         onClose={() => setIsCreatingMeeting(false)}

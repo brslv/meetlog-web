@@ -9,26 +9,29 @@ import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import MeetingPage from './pages/MeetingPage'
+import DarkModeProvider from './components/darkMode/DarkModeProvider'
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/d">
-          <DashboardPage />
-        </Route>
-        <Route path="/m/:id">
-          <MeetingPage />
-        </Route>
-        <Route path="/login">
-          <LoginPage />
-        </Route>
-        <Route path="/register">
-          <RegisterPage />
-        </Route>
-        <Redirect to="/d" />
-      </Switch>
-    </Router>
+    <DarkModeProvider>
+      <Router>
+        <Switch>
+          <Route path="/d">
+            <DashboardPage />
+          </Route>
+          <Route path="/m/:id">
+            <MeetingPage />
+          </Route>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Redirect to="/d" />
+        </Switch>
+      </Router>
+    </DarkModeProvider>
   )
 }
 
