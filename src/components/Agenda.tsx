@@ -21,7 +21,7 @@ export default function Agenda() {
       {isAgendaOpen ? (
         <div className="z-10 absolute top-0 right-0 mt-11" ref={ref}>
           <div
-            className="p-4 bg-white border border-gray-300 rounded"
+            className="p-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700   rounded"
             style={{ minWidth: 300, maxWidth: 350 }}
           >
             <Input placeholder="What do you plan to discuss?" />
