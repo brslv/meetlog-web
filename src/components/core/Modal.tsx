@@ -1,6 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useRef } from 'react'
 import ReactDOM from 'react-dom'
 import cn from '../../utils/cn'
+import useOnEsc from '../../utils/useOnEsc'
+import useOnClickOutside from '../../utils/useOnOutsideClick'
 
 export default function Modal({
   children,
@@ -12,16 +14,15 @@ export default function Modal({
   open: boolean
   onClose: () => void
 } & React.ComponentPropsWithoutRef<'div'>) {
-  useEffect(() => {
-    const handler = (e: KeyboardEvent) => e.key === 'Escape' && onClose()
-    window.addEventListener('keyup', handler)
-    return () => window.removeEventListener('keyup', handler)
-  }, [onClose])
+  const ref = useRef(null)
+  useOnClickOutside(ref, onClose)
+  useOnEsc(onClose)
 
   return open
     ? ReactDOM.createPortal(
         <div className="z-10 fixed top-0 left-0 w-screen h-screen flex items-center justify-center">
           <div
+            ref={ref}
             {...rest}
             className={cn(
               {
@@ -32,10 +33,7 @@ export default function Modal({
           >
             {children}
           </div>
-          <div
-            className="absolute top-0 left-0 w-screen h-screen bg-gray-700 dark:bg-gray-900 opacity-20 dark:opacity-70"
-            onClick={onClose}
-          />
+          <div className="absolute top-0 left-0 w-screen h-screen bg-gray-700 dark:bg-gray-900 opacity-20 dark:opacity-70" />
         </div>,
         document.getElementById('portal') || document.createElement('div')
       )

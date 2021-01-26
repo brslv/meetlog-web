@@ -22,6 +22,7 @@ export default function MeetingForm({
         <Input
           name="title"
           type="text"
+          placeholder="E.g. Registration flow"
           onChange={(e) => setTitle(e.target.value)}
         />
       </Label>

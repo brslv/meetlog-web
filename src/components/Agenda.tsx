@@ -24,7 +24,7 @@ export default function Agenda() {
             className="p-4 bg-white border border-gray-300 rounded"
             style={{ minWidth: 300, maxWidth: 350 }}
           >
-            <Input />
+            <Input placeholder="What do you plan to discuss?" />
 
             <div className={cn({ 'mt-4': true, hidden: !isAgendaOpen })}>
               This is my agenda
