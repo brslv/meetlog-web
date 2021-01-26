@@ -1,4 +1,5 @@
 import { Container } from './core/Container'
+import Button, { ButtonSize } from './core/Button'
 
 interface MeetingInput {
   id: number
@@ -17,9 +18,15 @@ export default function MeetingInputList({
           return (
             <div
               key={input.id}
-              className="p-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 mt-4 rounded"
+              className="border border-gray-300 dark:border-gray-700 mt-4 rounded overflow-hidden"
             >
-              {input.text}
+              <div className="p-4 bg-white dark:bg-gray-800">{input.text}</div>
+              <div className="flex items-center px-4 py-2 bg-gray-100">
+                <Button size={ButtonSize.sm} className="mr-2">
+                  To note
+                </Button>
+                <Button size={ButtonSize.sm}>To next step</Button>
+              </div>
             </div>
           )
         })}
