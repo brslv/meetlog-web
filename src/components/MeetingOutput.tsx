@@ -1,11 +1,11 @@
 import { Container } from './core/Container'
 import Title from './core/Title'
-import MeetingInputList from './MeetingInputList'
 import React, { useState } from 'react'
 import Button, { ButtonSize } from './core/Button'
+import MeetingOutputList from './MeetingOutputList'
 
 export default function MeetingOutput() {
-  const [inputs] = useState([
+  const [outputs] = useState([
     { id: 1, text: 'Lorem ipsum dolor sit amet' },
     { id: 2, text: 'Lorem ipsum dolor sit amet' },
     { id: 3, text: 'Lorem ipsum dolor sit amet' },
@@ -25,7 +25,7 @@ export default function MeetingOutput() {
         </Container>
       </div>
       <div className="relative flex-1 flex justify-start flex-col">
-        <MeetingInputList inputs={inputs} />
+        <MeetingOutputList outputs={outputs} />
       </div>
     </div>
   )
