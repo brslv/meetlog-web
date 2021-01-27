@@ -2,7 +2,6 @@ import Agenda from './Agenda'
 import MeetingInputList from './MeetingInputList'
 import MeetingInputField from './MeetingInputField'
 import React, { useState } from 'react'
-import { Container } from './core/Container'
 import Title from './core/Title'
 import {
   MEETING_INPUT_FIELD_SECTION_HEIGHT,
@@ -60,24 +59,48 @@ export default function MeetingInput() {
       text: 'Lorem ipsum dolor sit amet',
       output: null,
     },
+    {
+      id: 5,
+      author: {
+        name: 'Victor',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/3.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+      output: {
+        type: MeetingOutputType.Note,
+      },
+    },
+    {
+      id: 6,
+      author: {
+        name: 'Dave',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+      output: null,
+    },
   ])
 
   return (
-    <div className="flex flex-col relative border-r border-gray-300 dark:border-gray-700">
+    <div className="relative flex flex-col relative border-r border-gray-300 dark:border-gray-700">
       <div
         style={{ height: MEETING_INPUT_HEADING_SECTION_HEIGHT }}
         className="bg-white dark:bg-gray-800 border-b border-gray-300 dark:border-gray-700"
       >
-        <Container>
+        <div className="py-2.5 px-4">
           <div className="flex justify-between items-center">
             <Title bg pushBottom={false}>
               Input
             </Title>
             <Agenda />
           </div>
-        </Container>
+        </div>
       </div>
-      <div className="relative flex-1 flex justify-end flex-col">
+      <div className="relative flex-1 justify-self-end flex flex-col-reverse">
         <MeetingInputList inputs={inputs} />
       </div>
       <div

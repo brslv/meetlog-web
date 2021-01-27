@@ -5,6 +5,7 @@ import Title from './core/Title'
 import { RiStickyNoteLine as NoteIcon } from 'react-icons/ri'
 import { RiTaskLine as TaskIcon } from 'react-icons/ri'
 import { MeetingOutputType } from './MeetingOutput'
+import cn from '../utils/cn'
 
 export interface MeetingInputItemType {
   id: number
@@ -20,8 +21,10 @@ export interface MeetingInputItemType {
 
 export default function MeetingInputItem({
   input,
+  isLast,
 }: {
   input: MeetingInputItemType
+  isLast: boolean
 }) {
   const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
   const ref = useRef<React.ElementRef<'div'> | null>(null)
@@ -31,7 +34,12 @@ export default function MeetingInputItem({
   )
 
   return (
-    <div className="flex relative mt-4">
+    <div
+      className={cn({
+        'flex relative mt-4': true,
+        'mb-16': isActionsPanelOpen && isLast,
+      })}
+    >
       <Avatar src={input.author.avatar.src} className="mr-2" />
       <div className="w-full" onClick={() => setIsActionsPanelOpen(true)}>
         <div
@@ -63,7 +71,7 @@ export default function MeetingInputItem({
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
               <Title>Convert to</Title>
-              <div className="mb-2 px-2 py-1.5 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
+              <div className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
                 <div className="flex justify-between items-center">
                   <span>Note</span>
                   <div>
@@ -71,7 +79,7 @@ export default function MeetingInputItem({
                   </div>
                 </div>
               </div>
-              <div className="px-2 py-1.5 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
+              <div className="px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
                 <div className="flex justify-between items-center">
                   <span>Next step</span>
                   <div>

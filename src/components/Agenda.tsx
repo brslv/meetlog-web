@@ -1,6 +1,6 @@
 import cn from '../utils/cn'
 import React, { useRef, useState } from 'react'
-import Button, { ButtonSize } from './core/Button'
+import Button from './core/Button'
 import Input from './core/Input'
 import useOnClickOutside from '../utils/useOnOutsideClick'
 import useOnEsc from '../utils/useOnEsc'
@@ -14,12 +14,10 @@ export default function Agenda() {
 
   return (
     <div className="relative">
-      <Button size={ButtonSize.Sm} onClick={() => setIsAgendaOpen(true)}>
-        Agenda
-      </Button>
+      <Button onClick={() => setIsAgendaOpen(true)}>Agenda</Button>
 
       {isAgendaOpen ? (
-        <div className="z-10 absolute top-0 right-0 mt-10" ref={ref}>
+        <div className="z-10 absolute top-0 right-0 mt-14 shadow-xl" ref={ref}>
           <div
             className="p-4 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700   rounded"
             style={{ minWidth: 300, maxWidth: 350 }}

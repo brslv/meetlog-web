@@ -1,4 +1,3 @@
-import { Container } from './core/Container'
 import {
   MEETING_INPUT_FIELD_SECTION_HEIGHT,
   MEETING_INPUT_HEADING_SECTION_HEIGHT,
@@ -12,18 +11,24 @@ export default function MeetingInputList({
 }) {
   return (
     <div
-      className="overflow-auto"
+      className="flex flex-col justify-end"
       style={{
         height: `calc(100vh - ${MEETING_INPUT_HEADING_SECTION_HEIGHT}px - ${MEETING_INPUT_FIELD_SECTION_HEIGHT}px`,
       }}
     >
-      <Container className="h-full">
-        <div className="h-full flex flex-col justify-end">
-          {inputs.map((input) => (
-            <MeetingInputItem input={input} />
+      <div className="flex flex-col pt-4 overflow-hidden">
+        <div className="flex flex-col-reverse overflow-auto p-4">
+          {inputs.map((input, i) => (
+            <MeetingInputItem
+              key={input.id}
+              input={input}
+              isLast={
+                i === 0 /*because we use row-reverse, the last is with idx 0*/
+              }
+            />
           ))}
         </div>
-      </Container>
+      </div>
     </div>
   )
 }
