@@ -1,5 +1,6 @@
 import React from 'react'
 import { LinkButton } from './core/Button'
+import Card from './core/Card'
 
 interface Meeting {
   id: number
@@ -9,7 +10,7 @@ interface Meeting {
 
 export default function MeetingCard({ data }: { data: Meeting }) {
   return (
-    <div className="flex flex-col justify-end border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 p-4 hover:shadow-md hover:border-indigo-500 dark:hover:border-indigo-300">
+    <Card className="flex flex-col justify-end">
       <div className="flex-1">
         <h1 className="font-bold text-xl">{data.title}</h1>
         <div>25 Jan 21, Monday</div>
@@ -21,6 +22,6 @@ export default function MeetingCard({ data }: { data: Meeting }) {
           Open
         </LinkButton>
       </div>
-    </div>
+    </Card>
   )
 }

@@ -6,6 +6,8 @@ import { RiStickyNoteLine as NoteIcon } from 'react-icons/ri'
 import { RiTaskLine as TaskIcon } from 'react-icons/ri'
 import { MeetingOutputType } from './MeetingOutput'
 import cn from '../utils/cn'
+import Card from './core/Card'
+import useOnEsc from '../utils/useOnEsc'
 
 export interface MeetingInputItemType {
   id: number
@@ -29,9 +31,8 @@ export default function MeetingInputItem({
   const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
   const ref = useRef<React.ElementRef<'div'> | null>(null)
 
-  useOnClickOutside(ref, () =>
-    setTimeout(() => setIsActionsPanelOpen(false), 0)
-  )
+  useOnEsc(() => setIsActionsPanelOpen(false))
+  useOnClickOutside(ref, () => setIsActionsPanelOpen(false))
 
   return (
     <div
@@ -42,27 +43,28 @@ export default function MeetingInputItem({
     >
       <Avatar src={input.author.avatar.src} className="mr-2" />
       <div className="w-full" onClick={() => setIsActionsPanelOpen(true)}>
-        <div
+        <Card
           key={input.id}
-          className="bg-white dark:bg-gray-800 cursor-pointer relative border border-gray-300 dark:border-gray-700 rounded overflow-hidden"
+          className={cn({
+            'cursor-pointer relative overflow-hidden': true,
+            'border-indigo-500 dark:border-indigo-400 shadow-md': isActionsPanelOpen,
+          })}
         >
-          <div className="p-4">
-            <div className="text-sm mb-2">
-              <div className="mr-2 font-bold inline-block">
-                {input.author.name}
-              </div>
-              <div className="mr-2 text-sm text-gray-500 inline-block">
-                12 Jan, 15:45
-              </div>
-              {input.output ? (
-                <div className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900 rounded-full">
-                  {input.output.type}
-                </div>
-              ) : null}
+          <div className="text-sm mb-2">
+            <div className="mr-2 font-bold inline-block">
+              {input.author.name}
             </div>
-            <div>{input.text}</div>
+            <div className="mr-2 text-sm text-gray-500 inline-block">
+              12 Jan, 15:45
+            </div>
+            {input.output ? (
+              <div className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900 rounded-full">
+                {input.output.type}
+              </div>
+            ) : null}
           </div>
-        </div>
+          <div>{input.text}</div>
+        </Card>
 
         {isActionsPanelOpen ? (
           <div
