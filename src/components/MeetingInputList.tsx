@@ -16,7 +16,7 @@ export default function MeetingInputList({
         height: `calc(100vh - ${MEETING_INPUT_HEADING_SECTION_HEIGHT}px - ${MEETING_INPUT_FIELD_SECTION_HEIGHT}px`,
       }}
     >
-      <div className="flex flex-col pt-4 overflow-hidden">
+      <div className="flex flex-col overflow-hidden">
         <div className="flex flex-col-reverse overflow-auto p-4">
           {inputs.map((input, i) => (
             <MeetingInputItem

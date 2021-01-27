@@ -36,7 +36,7 @@ export default function MeetingInputItem({
   return (
     <div
       className={cn({
-        'flex relative mt-4': true,
+        'flex relative pt-4': true,
         'mb-16': isActionsPanelOpen && isLast,
       })}
     >

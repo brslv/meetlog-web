@@ -12,7 +12,7 @@ export default function Avatar({
       src={src}
       className={cn(
         {
-          'w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-400 cursor-pointer': true,
+          'w-10 h-10 rounded-full border border-gray-300 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-400 cursor-pointer': true,
         },
         props.className
       )}
