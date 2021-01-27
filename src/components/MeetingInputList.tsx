@@ -17,8 +17,8 @@ export default function MeetingInputList({
         height: `calc(100vh - ${MEETING_INPUT_HEADING_SECTION_HEIGHT}px - ${MEETING_INPUT_FIELD_SECTION_HEIGHT}px`,
       }}
     >
-      <Container>
-        <div className="flex flex-col justify-end">
+      <Container className="h-full">
+        <div className="h-full flex flex-col justify-end">
           {inputs.map((input) => (
             <MeetingInputItem input={input} />
           ))}

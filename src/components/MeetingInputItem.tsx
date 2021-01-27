@@ -1,7 +1,7 @@
-import Button, { ButtonSize } from './core/Button'
 import React, { useRef, useState } from 'react'
 import useOnClickOutside from '../utils/useOnOutsideClick'
 import Avatar from './Avatar'
+import Title from './core/Title'
 
 export interface MeetingInputItemType {
   id: number
@@ -48,8 +48,19 @@ export default function MeetingInputItem({
         </div>
 
         {isActionsPanelOpen ? (
-          <div ref={ref} className="absolute top-0 right-0 mt-2 mr-2">
-            <Button size={ButtonSize.Sm}>Convert</Button>
+          <div
+            ref={ref}
+            className="z-10 absolute top-0 right-0 mt-2 -mr-2 shadow"
+          >
+            <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
+              <Title>Convert to</Title>
+              <div className="mb-2 p-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
+                Note
+              </div>
+              <div className="mb-2 p-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
+                Next step
+              </div>
+            </div>
           </div>
         ) : null}
       </div>
