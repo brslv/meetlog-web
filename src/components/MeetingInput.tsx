@@ -9,6 +9,7 @@ import {
   MEETING_INPUT_HEADING_SECTION_HEIGHT,
 } from '../constants'
 import { MeetingInputItemType } from './MeetingInputItem'
+import { MeetingOutputType } from './MeetingOutput'
 
 export default function MeetingInput() {
   const [inputs] = useState<MeetingInputItemType[]>([
@@ -21,6 +22,7 @@ export default function MeetingInput() {
         },
       },
       text: 'Lorem ipsum dolor sit amet',
+      output: null,
     },
     {
       id: 2,
@@ -32,6 +34,7 @@ export default function MeetingInput() {
       },
       text:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+      output: null,
     },
     {
       id: 3,
@@ -42,6 +45,9 @@ export default function MeetingInput() {
         },
       },
       text: 'Lorem ipsum dolor sit amet',
+      output: {
+        type: MeetingOutputType.Note,
+      },
     },
     {
       id: 4,
@@ -52,6 +58,7 @@ export default function MeetingInput() {
         },
       },
       text: 'Lorem ipsum dolor sit amet',
+      output: null,
     },
   ])
 

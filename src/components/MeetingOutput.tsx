@@ -4,6 +4,11 @@ import React, { useState } from 'react'
 import Button, { ButtonSize } from './core/Button'
 import MeetingOutputList from './MeetingOutputList'
 
+export enum MeetingOutputType {
+  Note = 'Note',
+  NextStep = 'NextStep',
+}
+
 export default function MeetingOutput() {
   const [outputs] = useState([
     { id: 1, text: 'Lorem ipsum dolor sit amet' },

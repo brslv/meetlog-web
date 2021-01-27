@@ -2,6 +2,9 @@ import React, { useRef, useState } from 'react'
 import useOnClickOutside from '../utils/useOnOutsideClick'
 import Avatar from './Avatar'
 import Title from './core/Title'
+import { RiStickyNoteLine as NoteIcon } from 'react-icons/ri'
+import { RiTaskLine as TaskIcon } from 'react-icons/ri'
+import { MeetingOutputType } from './MeetingOutput'
 
 export interface MeetingInputItemType {
   id: number
@@ -12,6 +15,7 @@ export interface MeetingInputItemType {
       src: string
     }
   }
+  output: { type: MeetingOutputType } | null
 }
 
 export default function MeetingInputItem({
@@ -39,9 +43,14 @@ export default function MeetingInputItem({
               <div className="mr-2 font-bold inline-block">
                 {input.author.name}
               </div>
-              <div className="text-sm text-gray-500 inline-block">
+              <div className="mr-2 text-sm text-gray-500 inline-block">
                 12 Jan, 15:45
               </div>
+              {input.output ? (
+                <div className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900 rounded-full">
+                  {input.output.type}
+                </div>
+              ) : null}
             </div>
             <div>{input.text}</div>
           </div>
@@ -50,15 +59,25 @@ export default function MeetingInputItem({
         {isActionsPanelOpen ? (
           <div
             ref={ref}
-            className="z-10 absolute top-0 right-0 mt-2 -mr-2 shadow"
+            className="z-10 absolute top-0 right-0 mt-2 -mr-2 shadow-xl"
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
               <Title>Convert to</Title>
-              <div className="mb-2 p-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
-                Note
+              <div className="mb-2 px-2 py-1.5 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
+                <div className="flex justify-between items-center">
+                  <span>Note</span>
+                  <div>
+                    <NoteIcon />
+                  </div>
+                </div>
               </div>
-              <div className="mb-2 p-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
-                Next step
+              <div className="px-2 py-1.5 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-40">
+                <div className="flex justify-between items-center">
+                  <span>Next step</span>
+                  <div>
+                    <TaskIcon />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
