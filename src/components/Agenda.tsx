@@ -14,7 +14,7 @@ export default function Agenda() {
 
   return (
     <div className="relative">
-      <Button size={ButtonSize.sm} onClick={() => setIsAgendaOpen(true)}>
+      <Button size={ButtonSize.Sm} onClick={() => setIsAgendaOpen(true)}>
         Agenda
       </Button>
 

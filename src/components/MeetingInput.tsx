@@ -8,15 +8,51 @@ import {
   MEETING_INPUT_FIELD_SECTION_HEIGHT,
   MEETING_INPUT_HEADING_SECTION_HEIGHT,
 } from '../constants'
+import { MeetingInputItemType } from './MeetingInputItem'
 
 export default function MeetingInput() {
-  const [inputs] = useState([
-    { id: 1, text: 'Lorem ipsum dolor sit amet' },
-    { id: 2, text: 'Lorem ipsum dolor sit amet' },
-    { id: 3, text: 'Lorem ipsum dolor sit amet' },
-    { id: 4, text: 'Lorem ipsum dolor sit amet' },
-    { id: 5, text: 'Lorem ipsum dolor sit amet' },
-    { id: 6, text: 'Lorem ipsum dolor sit amet' },
+  const [inputs] = useState<MeetingInputItemType[]>([
+    {
+      id: 1,
+      author: {
+        name: 'Samuel',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/1.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+    },
+    {
+      id: 2,
+      author: {
+        name: 'Johan',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/2.jpg',
+        },
+      },
+      text:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
+    },
+    {
+      id: 3,
+      author: {
+        name: 'Victor',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/3.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+    },
+    {
+      id: 4,
+      author: {
+        name: 'Dave',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+    },
   ])
 
   return (

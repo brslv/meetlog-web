@@ -11,6 +11,7 @@ import Title from './core/Title'
 import MeetingForm from './MeetingForm'
 import { Link } from 'react-router-dom'
 import DarkModeToggle from './darkMode/DarkModeToggle'
+import Avatar from './Avatar'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>
@@ -94,11 +95,7 @@ export default function SideNav() {
           <DarkModeToggle />
         </SideNavItem>
         <SideNavItem hint="Profile settings" hintLeftSpacing={14} pushY={false}>
-          <img
-            alt="User avatar"
-            src="https://randomuser.me/api/portraits/lego/2.jpg"
-            className="w-12 h-12 rounded-full border border-gray-300 dark:border-gray-700 hover:border-indigo-500 dark:hover:border-indigo-400 cursor-pointer"
-          />
+          <Avatar src="https://randomuser.me/api/portraits/lego/0.jpg" />
         </SideNavItem>
       </div>
 

@@ -20,7 +20,7 @@ export default function MeetingOutput() {
               Output
             </Title>
 
-            <Button size={ButtonSize.sm}>Notes</Button>
+            <Button size={ButtonSize.Sm}>Notes</Button>
           </div>
         </Container>
       </div>
