@@ -8,7 +8,7 @@ import Card from './core/Card'
 import useOnEsc from '../utils/useOnEsc'
 import { DeleteIcon, NoteIcon, TaskIcon } from '../toolkit'
 
-export interface MeetingInputItemType {
+export interface IEntity {
   id: number
   text: string
   author: {
@@ -20,11 +20,11 @@ export interface MeetingInputItemType {
   output: { type: MeetingOutputType } | null
 }
 
-export default function Io({
+export default function Entity({
   input,
   isLast,
 }: {
-  input: MeetingInputItemType
+  input: IEntity
   isLast: boolean
 }) {
   const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
@@ -91,7 +91,7 @@ export default function Io({
                   </div>
                 </div>
               </div>
-              <div className="px-4 py-2 cursor-pointer bg-red-100 dark:bg-red-600 hover:bg-red-200 dark:hover:bg-red-500 rounded w-52">
+              <div className="px-4 py-2 cursor-pointer bg-red-100 dark:bg-red-500 hover:bg-red-200 hover:dark:bg-red-600 rounded w-52">
                 <div className="flex justify-between items-center">
                   <span>Delete</span>
                   <div>

@@ -25,19 +25,17 @@ const cls = ({
 }) => {
   return cn(
     {
-      'rounded text-white dark:text-gray-900 focus:ring focus:outline-none': true,
+      'rounded text-white focus:ring focus:outline-none': true,
       'px-4 py-1.5': size === ButtonSize.Md,
       'px-2 py-1 text-sm': size === ButtonSize.Sm,
-      'bg-indigo-500 dark:bg-indigo-400 hover:bg-indigo-600 dark:hover:bg-indigo-500':
+      'bg-indigo-500 hover:bg-indigo-600':
         !outline && variant === ButtonVariant.Primary,
-      'bg-red-500 dark:bg-red-400 hover:bg-red-600 dark:hover:bg-red-500':
+      'bg-red-500 hover:bg-red-600':
         !outline && variant === ButtonVariant.Error,
-      'border border-indigo-500 dark:border-indigo-400 text-indigo-500 dark:text-indigo-400': !!(
+      'border border-indigo-500 text-indigo-500': !!(
         outline && ButtonVariant.Primary
       ),
-      'border border-red-500 dark:border-red-400 text-red-500 dark:text-red-400': !!(
-        outline && ButtonVariant.Error
-      ),
+      'border border-red-500 text-red-500': !!(outline && ButtonVariant.Error),
     },
     className
   )

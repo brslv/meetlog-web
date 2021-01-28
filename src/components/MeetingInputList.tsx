@@ -2,13 +2,9 @@ import {
   MEETING_INPUT_FIELD_SECTION_HEIGHT,
   MEETING_INPUT_HEADING_SECTION_HEIGHT,
 } from '../constants'
-import Io, { MeetingInputItemType } from './Io'
+import Entity, { IEntity } from './Entity'
 
-export default function MeetingInputList({
-  inputs,
-}: {
-  inputs: MeetingInputItemType[]
-}) {
+export default function MeetingInputList({ inputs }: { inputs: IEntity[] }) {
   return (
     <div
       className="flex flex-col justify-end"
@@ -19,7 +15,7 @@ export default function MeetingInputList({
       <div className="flex flex-col overflow-hidden">
         <div className="flex flex-col-reverse overflow-auto p-4">
           {inputs.map((input, i) => (
-            <Io
+            <Entity
               key={input.id}
               input={input}
               isLast={

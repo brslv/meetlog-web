@@ -7,11 +7,11 @@ import {
   MEETING_INPUT_FIELD_SECTION_HEIGHT,
   MEETING_INPUT_HEADING_SECTION_HEIGHT,
 } from '../constants'
-import { MeetingInputItemType } from './Io'
+import { IEntity } from './Entity'
 import { MeetingOutputType } from './MeetingOutput'
 
 export default function MeetingInput() {
-  const [inputs] = useState<MeetingInputItemType[]>([
+  const [inputs] = useState<IEntity[]>([
     {
       id: 1,
       author: {
