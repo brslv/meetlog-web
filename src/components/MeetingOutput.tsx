@@ -2,6 +2,7 @@ import Title from './core/Title'
 import React, { useState } from 'react'
 import Button from './core/Button'
 import MeetingOutputList from './MeetingOutputList'
+import Stats from './Stats'
 
 export enum MeetingOutputType {
   Note = 'Note',
@@ -30,6 +31,9 @@ export default function MeetingOutput() {
       </div>
       <div className="relative flex-1 flex justify-start flex-col">
         <MeetingOutputList outputs={outputs} />
+      </div>
+      <div className="fixed bottom-0 right-0 mr-4 mb-4">
+        <Stats />
       </div>
     </div>
   )
