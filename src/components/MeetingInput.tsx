@@ -7,7 +7,7 @@ import {
   MEETING_INPUT_FIELD_SECTION_HEIGHT,
   MEETING_INPUT_HEADING_SECTION_HEIGHT,
 } from '../constants'
-import { MeetingInputItemType } from './MeetingInputItem'
+import { MeetingInputItemType } from './Io'
 import { MeetingOutputType } from './MeetingOutput'
 
 export default function MeetingInput() {

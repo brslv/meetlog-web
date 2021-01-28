@@ -21,7 +21,7 @@ export interface MeetingInputItemType {
   output: { type: MeetingOutputType } | null
 }
 
-export default function MeetingInputItem({
+export default function Io({
   input,
   isLast,
 }: {
