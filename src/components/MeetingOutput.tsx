@@ -3,12 +3,21 @@ import React, { useState } from 'react'
 import Button from './core/Button'
 import MeetingOutputList from './MeetingOutputList'
 import Stats from './Stats'
+import { IEntity } from './Entity'
 
 export default function MeetingOutput() {
-  const [outputs] = useState([
-    { id: 1, text: 'Lorem ipsum dolor sit amet' },
-    { id: 2, text: 'Lorem ipsum dolor sit amet' },
-    { id: 3, text: 'Lorem ipsum dolor sit amet' },
+  const [outputs] = useState<IEntity[]>([
+    {
+      id: 1,
+      text: 'Lorem ipsum dolor sit amet',
+      author: {
+        name: 'Dave',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
+        },
+      },
+      output: null,
+    },
   ])
 
   return (

@@ -1,26 +1,23 @@
 import { Container } from './core/Container'
+import Entity, { IEntity } from './Entity'
 
-interface MeetingOutput {
-  id: number
-  text: string
-}
-
-export default function MeetingOutputList({
-  outputs,
-}: {
-  outputs: MeetingOutput[]
-}) {
+export default function MeetingOutputList({ outputs }: { outputs: IEntity[] }) {
   return (
     <Container>
       <div className="flex flex-col justify-end">
-        {outputs.map((output) => {
+        {outputs.map((output, i) => {
           return (
-            <div
+            <Entity
               key={output.id}
-              className="border border-gray-300 dark:border-gray-700 mt-4 rounded overflow-hidden"
-            >
-              <div className="p-4 bg-white dark:bg-gray-800">{output.text}</div>
-            </div>
+              data={output}
+              isLast={i === outputs.length - 1}
+            />
+            // <div
+            //   key={output.id}
+            //   className="border border-gray-300 dark:border-gray-700 mt-4 rounded overflow-hidden"
+            // >
+            //   <div className="p-4 bg-white dark:bg-gray-800">{output.text}</div>
+            // </div>
           )
         })}
       </div>
