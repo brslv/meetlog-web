@@ -2,12 +2,11 @@ import React, { useRef, useState } from 'react'
 import useOnClickOutside from '../utils/useOnOutsideClick'
 import Avatar from './Avatar'
 import Title from './core/Title'
-import { RiStickyNoteLine as NoteIcon } from 'react-icons/ri'
-import { RiTaskLine as TaskIcon } from 'react-icons/ri'
 import { MeetingOutputType } from './MeetingOutput'
 import cn from '../utils/cn'
 import Card from './core/Card'
 import useOnEsc from '../utils/useOnEsc'
+import { DeleteIcon, NoteIcon, TaskIcon } from '../toolkit'
 
 export interface MeetingInputItemType {
   id: number
@@ -84,11 +83,19 @@ export default function Io({
                   </div>
                 </div>
               </div>
-              <div className="px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
+              <div className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
                 <div className="flex justify-between items-center">
                   <span>Next step</span>
                   <div>
                     <TaskIcon />
+                  </div>
+                </div>
+              </div>
+              <div className="px-4 py-2 cursor-pointer bg-red-100 dark:bg-red-600 hover:bg-red-200 dark:hover:bg-red-500 rounded w-52">
+                <div className="flex justify-between items-center">
+                  <span>Delete</span>
+                  <div>
+                    <DeleteIcon />
                   </div>
                 </div>
               </div>
