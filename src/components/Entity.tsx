@@ -25,10 +25,10 @@ export interface IEntity {
 }
 
 export default function Entity({
-  input,
+  data,
   isLast,
 }: {
-  input: IEntity
+  data: IEntity
   isLast: boolean
 }) {
   const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
@@ -43,10 +43,10 @@ export default function Entity({
         'flex relative pt-4': true,
       })}
     >
-      <Avatar src={input.author.avatar.src} className="mr-2" />
+      <Avatar src={data.author.avatar.src} className="mr-2" />
       <div className="w-full" onClick={() => setIsActionsPanelOpen(true)}>
         <Card
-          key={input.id}
+          key={data.id}
           className={cn({
             'cursor-pointer relative overflow-hidden': true,
             'border-indigo-500 dark:border-indigo-400 shadow-md': isActionsPanelOpen,
@@ -54,18 +54,18 @@ export default function Entity({
         >
           <div className="text-sm mb-2">
             <div className="mr-2 font-bold inline-block">
-              {input.author.name}
+              {data.author.name}
             </div>
             <div className="mr-2 text-sm text-gray-500 inline-block">
               12 Jan, 15:45
             </div>
-            {input.output ? (
+            {data.output ? (
               <div className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900 rounded-full">
-                {input.output.type}
+                {data.output.type}
               </div>
             ) : null}
           </div>
-          <div>{input.text}</div>
+          <div>{data.text}</div>
         </Card>
 
         {isActionsPanelOpen ? (

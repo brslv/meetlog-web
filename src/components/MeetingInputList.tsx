@@ -17,7 +17,7 @@ export default function MeetingInputList({ inputs }: { inputs: IEntity[] }) {
           {inputs.map((input, i) => (
             <Entity
               key={input.id}
-              input={input}
+              data={input}
               isLast={
                 i === 0 /*because we use row-reverse, the last is with idx 0*/
               }
