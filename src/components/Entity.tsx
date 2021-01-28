@@ -2,11 +2,15 @@ import React, { useRef, useState } from 'react'
 import useOnClickOutside from '../utils/useOnOutsideClick'
 import Avatar from './Avatar'
 import Title from './core/Title'
-import { MeetingOutputType } from './MeetingOutput'
 import cn from '../utils/cn'
 import Card from './core/Card'
 import useOnEsc from '../utils/useOnEsc'
 import { DeleteIcon, NoteIcon, TaskIcon } from '../toolkit'
+
+export enum EntityOutputType {
+  Note = 'Note',
+  NextStep = 'NextStep',
+}
 
 export interface IEntity {
   id: number
@@ -17,7 +21,7 @@ export interface IEntity {
       src: string
     }
   }
-  output: { type: MeetingOutputType } | null
+  output: { type: EntityOutputType } | null
 }
 
 export default function Entity({

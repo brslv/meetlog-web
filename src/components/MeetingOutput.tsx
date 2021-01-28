@@ -4,11 +4,6 @@ import Button from './core/Button'
 import MeetingOutputList from './MeetingOutputList'
 import Stats from './Stats'
 
-export enum MeetingOutputType {
-  Note = 'Note',
-  NextStep = 'NextStep',
-}
-
 export default function MeetingOutput() {
   const [outputs] = useState([
     { id: 1, text: 'Lorem ipsum dolor sit amet' },

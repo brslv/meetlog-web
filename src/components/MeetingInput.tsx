@@ -7,8 +7,7 @@ import {
   MEETING_INPUT_FIELD_SECTION_HEIGHT,
   MEETING_INPUT_HEADING_SECTION_HEIGHT,
 } from '../constants'
-import { IEntity } from './Entity'
-import { MeetingOutputType } from './MeetingOutput'
+import { EntityOutputType, IEntity } from './Entity'
 
 export default function MeetingInput() {
   const [inputs] = useState<IEntity[]>([
@@ -45,7 +44,7 @@ export default function MeetingInput() {
       },
       text: 'Lorem ipsum dolor sit amet',
       output: {
-        type: MeetingOutputType.Note,
+        type: EntityOutputType.Note,
       },
     },
     {
@@ -69,7 +68,7 @@ export default function MeetingInput() {
       },
       text: 'Lorem ipsum dolor sit amet',
       output: {
-        type: MeetingOutputType.Note,
+        type: EntityOutputType.NextStep,
       },
     },
     {
