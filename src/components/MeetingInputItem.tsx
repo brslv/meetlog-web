@@ -38,7 +38,6 @@ export default function MeetingInputItem({
     <div
       className={cn({
         'flex relative pt-4': true,
-        'mb-16': isActionsPanelOpen && isLast,
       })}
     >
       <Avatar src={input.author.avatar.src} className="mr-2" />
@@ -69,7 +68,11 @@ export default function MeetingInputItem({
         {isActionsPanelOpen ? (
           <div
             ref={ref}
-            className="z-10 absolute top-0 right-0 mt-2 -mr-2 shadow-xl"
+            className={cn({
+              'z-10 absolute right-0 mt-2 -mr-2 shadow-xl': true,
+              'top-0': !isLast,
+              'bottom-0': isLast,
+            })}
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
               <Title>Convert to</Title>
