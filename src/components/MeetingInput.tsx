@@ -83,6 +83,18 @@ export default function MeetingInput() {
       text: 'Lorem ipsum dolor sit amet',
       output: null,
     },
+    {
+      id: 7,
+      author: {
+        name: 'Dave',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
+        },
+      },
+      text:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
+      output: null,
+    },
   ])
 
   return (
