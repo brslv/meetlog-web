@@ -8,7 +8,7 @@ import MeetingInputFooter from '../components/MeetingInputFooter'
 import MeetingOutputFooter from '../components/MeetingOutputFooter'
 
 export default function MeetingPage() {
-  const [inputs] = useState<IEntity[]>([
+  const [inputs, setInputs] = useState<IEntity[]>([
     {
       id: 1,
       author: {
@@ -107,6 +107,23 @@ export default function MeetingPage() {
     },
   ])
 
+  const addInput = (text: string) => {
+    setInputs((prev) => [
+      {
+        id: Math.random(),
+        text,
+        author: {
+          avatar: {
+            src: 'https://randomuser.me/api/portraits/lego/8.jpg',
+          },
+          name: 'Stamat',
+        },
+        output: null,
+      },
+      ...prev,
+    ])
+  }
+
   return (
     <Page>
       <SideNav />
@@ -114,7 +131,7 @@ export default function MeetingPage() {
         <div className="h-screen grid grid-cols-2">
           <MeetingSection
             headerRight={<Agenda />}
-            footer={<MeetingInputFooter />}
+            footer={<MeetingInputFooter onSubmitInput={addInput} />}
             title="Input"
             entities={inputs}
           />
