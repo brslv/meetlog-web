@@ -4,8 +4,7 @@ import React, { useState } from 'react'
 import MeetingSection from '../components/MeetingSection'
 import { EntityOutputType, IEntity } from '../components/Entity'
 import Agenda from '../components/Agenda'
-import MeetingInputField from '../components/MeetingInputField'
-import { SECTION_FOOTER_MIN_HEIGHT } from '../constants'
+import MeetingInputFooter from '../components/MeetingInputFooter'
 import MeetingOutputFooter from '../components/MeetingOutputFooter'
 
 export default function MeetingPage() {
@@ -115,14 +114,7 @@ export default function MeetingPage() {
         <div className="h-screen grid grid-cols-2">
           <MeetingSection
             headerRight={<Agenda />}
-            footer={
-              <div
-                className="border-t border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-4"
-                style={{ minHeight: SECTION_FOOTER_MIN_HEIGHT }}
-              >
-                <MeetingInputField />
-              </div>
-            }
+            footer={<MeetingInputFooter />}
             title="Input"
             entities={inputs}
           />
