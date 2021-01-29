@@ -5,6 +5,8 @@ import MeetingSection from '../components/MeetingSection'
 import { IEntity } from '../components/Entity'
 import Agenda from '../components/Agenda'
 import MeetingInputField from '../components/MeetingInputField'
+import { SECTION_FOOTER_MIN_HEIGHT } from '../constants'
+import MeetingOutputFooter from '../components/MeetingOutputFooter'
 
 export default function MeetingPage() {
   const [inputs] = useState<IEntity[]>([
@@ -113,11 +115,22 @@ export default function MeetingPage() {
         <div className="h-screen grid grid-cols-2">
           <MeetingSection
             headerRight={<Agenda />}
-            footer={<MeetingInputField />}
+            footer={
+              <div
+                className="border-t border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 p-4"
+                style={{ minHeight: SECTION_FOOTER_MIN_HEIGHT }}
+              >
+                <MeetingInputField />
+              </div>
+            }
             title="Input"
             entities={inputs}
           />
-          <MeetingSection title="Output" entities={outputs} />
+          <MeetingSection
+            title="Output"
+            entities={outputs}
+            footer={<MeetingOutputFooter />}
+          />
         </div>
       </SideNavPusher>
     </Page>

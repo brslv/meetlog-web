@@ -1,18 +1,9 @@
-import {
-  ENTITY_LIST_MIN_HEIGHT,
-  MEETING_INPUT_FIELD_SECTION_HEIGHT,
-  MEETING_INPUT_HEADING_SECTION_HEIGHT,
-} from '../constants'
+import { ENTITY_LIST_MIN_HEIGHT } from '../constants'
 import Entity, { IEntity } from './Entity'
 
 export default function EntityList({ entities }: { entities: IEntity[] }) {
   return (
-    <div
-      className="flex flex-col justify-end"
-      style={{
-        height: `calc(100vh - ${MEETING_INPUT_HEADING_SECTION_HEIGHT}px - ${MEETING_INPUT_FIELD_SECTION_HEIGHT}px`,
-      }}
-    >
+    <div className="flex flex-col justify-end">
       <div className="flex flex-col overflow-hidden">
         <div
           className="flex flex-col-reverse overflow-auto p-4"
