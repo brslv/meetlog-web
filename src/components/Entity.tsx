@@ -6,6 +6,7 @@ import cn from '../utils/cn'
 import Card from './core/Card'
 import useOnEsc from '../utils/useOnEsc'
 import { DeleteIcon, NoteIcon, TaskIcon } from '../toolkit'
+import ReactMarkdown from 'react-markdown'
 
 export enum EntityOutputType {
   Note = 'Note',
@@ -40,7 +41,7 @@ export default function Entity({
   return (
     <div
       className={cn({
-        'flex relative pt-4': true,
+        '__markdown flex relative pt-4': true,
       })}
     >
       <Avatar src={data.author.avatar.src} className="mr-2" />
@@ -65,7 +66,7 @@ export default function Entity({
               </div>
             ) : null}
           </div>
-          <div>{data.text}</div>
+          <ReactMarkdown>{data.text}</ReactMarkdown>
         </Card>
 
         {isActionsPanelOpen ? (
@@ -74,7 +75,7 @@ export default function Entity({
             className={cn({
               'z-10 absolute right-0 mt-2 -mr-2 shadow-xl': true,
               'top-0': !isLast,
-              'bottom-0': isLast,
+              'bottom-0 -mb-2': isLast,
             })}
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">

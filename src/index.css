@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    .__markdown h1 {
+        @apply text-3xl;
+    }
+    .__markdown h2 {
+        @apply text-2xl;
+    }
+    .__markdown h3 {
+        @apply text-xl;
+    }
+    .__markdown h4 {
+        @apply text-lg;
+    }
+    .__markdown h5 {
+        @apply text-base;
+    }
+    .__markdown h6 {
+        @apply text-sm;
+    }
+    .__markdown ul {
+        @apply ml-8;
+    }
+    .__markdown
+    .__markdown ul li {
+        list-style-type: circle;
+    }
+}
