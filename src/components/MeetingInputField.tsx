@@ -1,5 +1,12 @@
-import Input from './core/Input'
+import Textarea from './core/Textarea'
+import { MEETING_INPUT_TEXT_AREA_MAX_ROWS } from '../constants'
 
 export default function MeetingInputField() {
-  return <Input type="text" />
+  return (
+    <Textarea
+      style={{ resize: 'none' }}
+      rows={1}
+      maxRows={MEETING_INPUT_TEXT_AREA_MAX_ROWS}
+    />
+  )
 }

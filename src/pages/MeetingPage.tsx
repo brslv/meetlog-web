@@ -2,7 +2,7 @@ import Page from '../components/core/Page'
 import SideNav, { SideNavPusher } from '../components/SideNav'
 import React, { useState } from 'react'
 import MeetingSection from '../components/MeetingSection'
-import { IEntity } from '../components/Entity'
+import { EntityOutputType, IEntity } from '../components/Entity'
 import Agenda from '../components/Agenda'
 import MeetingInputField from '../components/MeetingInputField'
 import { SECTION_FOOTER_MIN_HEIGHT } from '../constants'
@@ -33,66 +33,66 @@ export default function MeetingPage() {
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
       output: null,
     },
-    // {
-    //   id: 3,
-    //   author: {
-    //     name: 'Victor',
-    //     avatar: {
-    //       src: 'https://randomuser.me/api/portraits/lego/3.jpg',
-    //     },
-    //   },
-    //   text: 'Lorem ipsum dolor sit amet',
-    //   output: {
-    //     type: EntityOutputType.Note,
-    //   },
-    // },
-    // {
-    //   id: 4,
-    //   author: {
-    //     name: 'Dave',
-    //     avatar: {
-    //       src: 'https://randomuser.me/api/portraits/lego/4.jpg',
-    //     },
-    //   },
-    //   text: 'Lorem ipsum dolor sit amet',
-    //   output: null,
-    // },
-    // {
-    //   id: 5,
-    //   author: {
-    //     name: 'Victor',
-    //     avatar: {
-    //       src: 'https://randomuser.me/api/portraits/lego/3.jpg',
-    //     },
-    //   },
-    //   text: 'Lorem ipsum dolor sit amet',
-    //   output: {
-    //     type: EntityOutputType.NextStep,
-    //   },
-    // },
-    // {
-    //   id: 6,
-    //   author: {
-    //     name: 'Dave',
-    //     avatar: {
-    //       src: 'https://randomuser.me/api/portraits/lego/4.jpg',
-    //     },
-    //   },
-    //   text: 'Lorem ipsum dolor sit amet',
-    //   output: null,
-    // },
-    // {
-    //   id: 7,
-    //   author: {
-    //     name: 'Dave',
-    //     avatar: {
-    //       src: 'https://randomuser.me/api/portraits/lego/4.jpg',
-    //     },
-    //   },
-    //   text:
-    //     "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
-    //   output: null,
-    // },
+    {
+      id: 3,
+      author: {
+        name: 'Victor',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/3.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+      output: {
+        type: EntityOutputType.Note,
+      },
+    },
+    {
+      id: 4,
+      author: {
+        name: 'Dave',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+      output: null,
+    },
+    {
+      id: 5,
+      author: {
+        name: 'Victor',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/3.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+      output: {
+        type: EntityOutputType.NextStep,
+      },
+    },
+    {
+      id: 6,
+      author: {
+        name: 'Dave',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
+        },
+      },
+      text: 'Lorem ipsum dolor sit amet',
+      output: null,
+    },
+    {
+      id: 7,
+      author: {
+        name: 'Dave',
+        avatar: {
+          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
+        },
+      },
+      text:
+        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
+      output: null,
+    },
   ])
   const [outputs] = useState<IEntity[]>([
     {

@@ -49,7 +49,7 @@ export default function Entity({
           key={data.id}
           className={cn({
             'cursor-pointer relative overflow-hidden': true,
-            'border-indigo-500 dark:border-indigo-400 shadow-md': isActionsPanelOpen,
+            'border-indigo-500 dark:border-indigo-400 dark:hover:border-indigo-400 shadow-md': isActionsPanelOpen,
           })}
         >
           <div className="text-sm mb-2">
