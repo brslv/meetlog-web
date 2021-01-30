@@ -11,6 +11,7 @@ interface IContext {
   convert: IConvert
   addItem: (text: string) => void
   removeItem: (id: number) => void
+  removeFromOutput: (id: number) => void
 }
 const Context = createContext<IContext | null>(null)
 
@@ -145,11 +146,21 @@ export default function EntitiesProvider({
     },
   }
 
+  const removeFromOutput = (id: number) => {
+    setItems((prev) =>
+      prev.map((item) => {
+        if (item.id === id) item.output = null
+        return item
+      })
+    )
+  }
+
   const value = {
     items,
     convert,
     addItem,
     removeItem,
+    removeFromOutput,
   }
 
   return <Context.Provider value={value}>{children}</Context.Provider>

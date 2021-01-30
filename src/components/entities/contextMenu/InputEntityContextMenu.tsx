@@ -27,10 +27,10 @@ export default function InputEntityContextMenu({
       </div>
       <div
         onClick={() => convert.toNextStep(entity.id)}
-        className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52"
+        className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded"
       >
         <div className="flex justify-between items-center">
-          <span>Next step</span>
+          <span className="mr-4">Next step</span>
           <div>
             <TaskIcon />
           </div>
@@ -38,10 +38,10 @@ export default function InputEntityContextMenu({
       </div>
       <div
         onClick={() => removeItem(entity.id)}
-        className="px-4 py-2 cursor-pointer bg-red-100 dark:bg-red-500 hover:bg-red-200 hover:dark:bg-red-600 rounded w-52"
+        className="px-4 py-2 cursor-pointer bg-red-100 dark:bg-red-500 hover:bg-red-200 hover:dark:bg-red-600 rounded"
       >
         <div className="flex justify-between items-center">
-          <span>Delete</span>
+          <span className="mr-4">Delete</span>
           <div>
             <DeleteIcon />
           </div>
