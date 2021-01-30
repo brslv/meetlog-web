@@ -33,7 +33,7 @@ export default function MeetingSection({
         </div>
       </div>
 
-      <div className="relative flex flex-col-reverse overflow-auto">
+      <div className="relative flex flex-col-reverse overflow-auto no-scrollbar">
         <EntityList entities={entities} />
       </div>
 
