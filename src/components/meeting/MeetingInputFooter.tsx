@@ -1,8 +1,8 @@
-import Textarea from './core/Textarea'
+import Textarea from '../core/Textarea'
 import {
   MEETING_INPUT_TEXT_AREA_MAX_ROWS,
   SECTION_FOOTER_MIN_HEIGHT,
-} from '../constants'
+} from '../../constants'
 import React, { useState } from 'react'
 
 export default function MeetingInputFooter({

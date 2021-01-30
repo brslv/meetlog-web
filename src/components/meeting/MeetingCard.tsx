@@ -1,6 +1,6 @@
 import React from 'react'
-import { LinkButton } from './core/Button'
-import Card from './core/Card'
+import { LinkButton } from '../core/Button'
+import Card from '../core/Card'
 
 interface Meeting {
   id: number

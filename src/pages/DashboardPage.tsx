@@ -1,6 +1,6 @@
 import SideNav, { SideNavPusher } from '../components/SideNav'
 import Page from '../components/core/Page'
-import MeetingsList from '../components/MeetingsList'
+import MeetingsList from '../components/meeting/MeetingsList'
 import Title from '../components/core/Title'
 import { Container } from '../components/core/Container'
 

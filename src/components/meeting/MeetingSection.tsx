@@ -1,21 +1,21 @@
-import EntityList from './EntityList'
+import EntityList from '../entities/EntityList'
 import React from 'react'
-import Title from './core/Title'
-import { MEETING_INPUT_HEADING_SECTION_HEIGHT } from '../constants'
-import { IEntity } from './Entity'
+import Title from '../core/Title'
+import { MEETING_INPUT_HEADING_SECTION_HEIGHT } from '../../constants'
+import { IEntity } from '../entities/Entity'
 
 export default function MeetingSection({
   title,
   entities,
   headerRight,
   footer,
-  entityContextMenu,
+  contextMenu,
 }: {
   title: string
   entities: IEntity[]
   headerRight?: React.ReactNode
   footer?: React.ReactNode
-  entityContextMenu: React.ReactNode
+  contextMenu: (entity: IEntity) => React.ReactNode
 }) {
   return (
     <div
@@ -36,7 +36,7 @@ export default function MeetingSection({
       </div>
 
       <div className="relative flex flex-col-reverse overflow-auto no-scrollbar">
-        <EntityList entities={entities} contextMenu={entityContextMenu} />
+        <EntityList entities={entities} contextMenu={contextMenu} />
       </div>
 
       <div>{footer}</div>

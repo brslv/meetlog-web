@@ -8,7 +8,7 @@ import {
 import cn from '../utils/cn'
 import Modal from './core/Modal'
 import Title from './core/Title'
-import MeetingForm from './MeetingForm'
+import MeetingForm from './meeting/MeetingForm'
 import { Link } from 'react-router-dom'
 import DarkModeToggle from './darkMode/DarkModeToggle'
 import Avatar from './Avatar'

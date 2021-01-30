@@ -1,8 +1,8 @@
-import Label from './core/Label'
-import Input from './core/Input'
-import Button from './core/Button'
+import Label from '../core/Label'
+import Input from '../core/Input'
+import Button from '../core/Button'
 import React, { useState } from 'react'
-import Form from './core/Form'
+import Form from '../core/Form'
 
 interface FormSubmitData {
   title: string

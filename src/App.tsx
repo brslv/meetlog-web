@@ -10,7 +10,7 @@ import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import MeetingPage from './pages/MeetingPage'
 import DarkModeProvider from './components/darkMode/DarkModeProvider'
-import EntitiesProvider from './components/EntitiesProvider'
+import EntitiesProvider from './components/entities/EntitiesProvider'
 
 function App() {
   return (

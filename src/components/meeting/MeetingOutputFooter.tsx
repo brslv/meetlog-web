@@ -1,5 +1,5 @@
 import React from 'react'
-import { SECTION_FOOTER_MIN_HEIGHT } from '../constants'
+import { SECTION_FOOTER_MIN_HEIGHT } from '../../constants'
 
 function FooterButton({ children }: { children: React.ReactNode }) {
   return (

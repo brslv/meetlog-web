@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react'
-import useOnClickOutside from '../utils/useOnOutsideClick'
-import Avatar from './Avatar'
-import cn from '../utils/cn'
-import Card from './core/Card'
-import useOnEsc from '../utils/useOnEsc'
+import useOnClickOutside from '../../utils/useOnOutsideClick'
+import Avatar from '../Avatar'
+import cn from '../../utils/cn'
+import Card from '../core/Card'
+import useOnEsc from '../../utils/useOnEsc'
 import ReactMarkdown from 'react-markdown'
 
 export enum EntityOutputType {
@@ -30,7 +30,7 @@ export default function Entity({
 }: {
   data: IEntity
   isLast: boolean
-  contextMenu: React.ReactNode
+  contextMenu: (entity: IEntity) => React.ReactNode
 }) {
   const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
   const ref = useRef<React.ElementRef<'div'> | null>(null)
@@ -79,7 +79,7 @@ export default function Entity({
             })}
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
-              {contextMenu}
+              {contextMenu(data)}
             </div>
           </div>
         ) : null}

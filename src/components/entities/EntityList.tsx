@@ -1,4 +1,4 @@
-import { ENTITY_LIST_MIN_HEIGHT } from '../constants'
+import { ENTITY_LIST_MIN_HEIGHT } from '../../constants'
 import Entity, { IEntity } from './Entity'
 import React from 'react'
 
@@ -7,7 +7,7 @@ export default function EntityList({
   contextMenu,
 }: {
   entities: IEntity[]
-  contextMenu: React.ReactNode
+  contextMenu: (entity: IEntity) => React.ReactNode
 }) {
   return (
     <div className="flex flex-col justify-end">
