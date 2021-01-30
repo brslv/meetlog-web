@@ -10,27 +10,30 @@ import RegisterPage from './pages/RegisterPage'
 import DashboardPage from './pages/DashboardPage'
 import MeetingPage from './pages/MeetingPage'
 import DarkModeProvider from './components/darkMode/DarkModeProvider'
+import EntitiesProvider from './components/EntitiesProvider'
 
 function App() {
   return (
     <DarkModeProvider>
-      <Router>
-        <Switch>
-          <Route path="/d">
-            <DashboardPage />
-          </Route>
-          <Route path="/m/:id">
-            <MeetingPage />
-          </Route>
-          <Route path="/login">
-            <LoginPage />
-          </Route>
-          <Route path="/register">
-            <RegisterPage />
-          </Route>
-          <Redirect to="/d" />
-        </Switch>
-      </Router>
+      <EntitiesProvider>
+        <Router>
+          <Switch>
+            <Route path="/d">
+              <DashboardPage />
+            </Route>
+            <Route path="/m/:id">
+              <MeetingPage />
+            </Route>
+            <Route path="/login">
+              <LoginPage />
+            </Route>
+            <Route path="/register">
+              <RegisterPage />
+            </Route>
+            <Redirect to="/d" />
+          </Switch>
+        </Router>
+      </EntitiesProvider>
     </DarkModeProvider>
   )
 }
