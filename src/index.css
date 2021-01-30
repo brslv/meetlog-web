@@ -35,8 +35,10 @@
     .__markdown ul {
         @apply ml-8;
     }
-    .__markdown
-    .__markdown ul li {
-        list-style-type: circle;
+    .__markdown ul {
+        list-style-type: disc;
+    }
+    .__markdown a {
+        @apply text-indigo-500 underline
     }
 }
