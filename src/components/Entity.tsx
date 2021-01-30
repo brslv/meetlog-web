@@ -1,11 +1,9 @@
 import React, { useRef, useState } from 'react'
 import useOnClickOutside from '../utils/useOnOutsideClick'
 import Avatar from './Avatar'
-import Title from './core/Title'
 import cn from '../utils/cn'
 import Card from './core/Card'
 import useOnEsc from '../utils/useOnEsc'
-import { DeleteIcon, NoteIcon, TaskIcon } from '../toolkit'
 import ReactMarkdown from 'react-markdown'
 
 export enum EntityOutputType {
@@ -28,9 +26,11 @@ export interface IEntity {
 export default function Entity({
   data,
   isLast,
+  contextMenu,
 }: {
   data: IEntity
   isLast: boolean
+  contextMenu: React.ReactNode
 }) {
   const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
   const ref = useRef<React.ElementRef<'div'> | null>(null)
@@ -79,31 +79,7 @@ export default function Entity({
             })}
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
-              <Title>Convert to</Title>
-              <div className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
-                <div className="flex justify-between items-center">
-                  <span>Note</span>
-                  <div>
-                    <NoteIcon />
-                  </div>
-                </div>
-              </div>
-              <div className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
-                <div className="flex justify-between items-center">
-                  <span>Next step</span>
-                  <div>
-                    <TaskIcon />
-                  </div>
-                </div>
-              </div>
-              <div className="px-4 py-2 cursor-pointer bg-red-100 dark:bg-red-500 hover:bg-red-200 hover:dark:bg-red-600 rounded w-52">
-                <div className="flex justify-between items-center">
-                  <span>Delete</span>
-                  <div>
-                    <DeleteIcon />
-                  </div>
-                </div>
-              </div>
+              {contextMenu}
             </div>
           </div>
         ) : null}

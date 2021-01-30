@@ -6,6 +6,8 @@ import { EntityOutputType, IEntity } from '../components/Entity'
 import Agenda from '../components/Agenda'
 import MeetingInputFooter from '../components/MeetingInputFooter'
 import MeetingOutputFooter from '../components/MeetingOutputFooter'
+import InputEntityContextMenu from '../components/InputEntityContextMenu'
+import OutputEntityContextMenu from '../components/OutputEntityContextMenu'
 
 export default function MeetingPage() {
   const [inputs, setInputs] = useState<IEntity[]>([
@@ -134,11 +136,13 @@ export default function MeetingPage() {
             footer={<MeetingInputFooter onSubmitInput={addInput} />}
             title="Input"
             entities={inputs}
+            entityContextMenu={<InputEntityContextMenu />}
           />
           <MeetingSection
             title="Output"
             entities={outputs}
             footer={<MeetingOutputFooter />}
+            entityContextMenu={<OutputEntityContextMenu />}
           />
         </div>
       </SideNavPusher>

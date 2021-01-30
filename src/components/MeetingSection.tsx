@@ -9,11 +9,13 @@ export default function MeetingSection({
   entities,
   headerRight,
   footer,
+  entityContextMenu,
 }: {
   title: string
   entities: IEntity[]
   headerRight?: React.ReactNode
   footer?: React.ReactNode
+  entityContextMenu: React.ReactNode
 }) {
   return (
     <div
@@ -34,7 +36,7 @@ export default function MeetingSection({
       </div>
 
       <div className="relative flex flex-col-reverse overflow-auto no-scrollbar">
-        <EntityList entities={entities} />
+        <EntityList entities={entities} contextMenu={entityContextMenu} />
       </div>
 
       <div>{footer}</div>
