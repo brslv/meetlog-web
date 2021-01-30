@@ -1,8 +1,14 @@
 import React, { createContext, useContext, useState } from 'react'
 import { EntityOutputType, IEntity } from './Entity'
 
+interface IConvert {
+  toNote(id: number): void
+  toNextStep(id: number): void
+}
+
 interface IContext {
   items: IEntity[]
+  convert: IConvert
   addItem: (text: string) => void
   removeItem: (id: number) => void
 }
@@ -119,8 +125,29 @@ export default function EntitiesProvider({
     setItems((prev) => prev.filter((item) => item.id !== id))
   }
 
+  const convertTo = (type: EntityOutputType, id: number) => {
+    setItems((prev) =>
+      prev.map((item) => {
+        if (item.id === id) {
+          item.output = { type }
+        }
+        return item
+      })
+    )
+  }
+
+  const convert = {
+    toNote(id: number) {
+      convertTo(EntityOutputType.Note, id)
+    },
+    toNextStep(id: number) {
+      convertTo(EntityOutputType.NextStep, id)
+    },
+  }
+
   const value = {
     items,
+    convert,
     addItem,
     removeItem,
   }

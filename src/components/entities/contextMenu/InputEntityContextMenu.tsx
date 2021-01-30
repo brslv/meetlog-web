@@ -9,12 +9,15 @@ export default function InputEntityContextMenu({
 }: {
   entity: IEntity
 }) {
-  const { removeItem } = useEntities()
+  const { removeItem, convert } = useEntities()
 
   return (
     <div>
       <Title>Convert to</Title>
-      <div className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
+      <div
+        onClick={() => convert.toNote(entity.id)}
+        className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52"
+      >
         <div className="flex justify-between items-center">
           <span>Note</span>
           <div>
@@ -22,7 +25,10 @@ export default function InputEntityContextMenu({
           </div>
         </div>
       </div>
-      <div className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52">
+      <div
+        onClick={() => convert.toNextStep(entity.id)}
+        className="mb-2 px-4 py-2 cursor-pointer bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded w-52"
+      >
         <div className="flex justify-between items-center">
           <span>Next step</span>
           <div>
