@@ -5,7 +5,7 @@ import MeetingOutputFooter, {
 import OutputEntityContextMenu from '../entities/contextMenu/OutputEntityContextMenu'
 import React, { useState } from 'react'
 import { useEntities } from '../entities/EntitiesProvider'
-import { EntityOutputType, IEntity } from '../entities/Entity'
+import { filterEntities } from './utils'
 
 export default function Output() {
   const { items } = useEntities()
@@ -13,24 +13,10 @@ export default function Output() {
     MeetingOutputFooterSections.Notes
   )
 
-  const filter = (
-    items: IEntity[],
-    activeSection: MeetingOutputFooterSections
-  ) => {
-    const map = {
-      [EntityOutputType.Note]: MeetingOutputFooterSections.Notes,
-      [EntityOutputType.NextStep]: MeetingOutputFooterSections.NextSteps,
-    }
-    return items.filter((item) => {
-      if (!item.output) return null
-      return map[item.output.type] === activeSection
-    })
-  }
-
   return (
     <MeetingSection
       title="Output"
-      entities={filter(items, activeSection)}
+      entities={filterEntities(items, activeSection)}
       footer={
         <MeetingOutputFooter
           activeSection={activeSection}

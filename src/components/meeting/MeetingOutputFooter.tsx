@@ -1,6 +1,9 @@
 import React from 'react'
 import { SECTION_FOOTER_MIN_HEIGHT } from '../../constants'
 import cn from '../../utils/cn'
+import { useEntities } from '../entities/EntitiesProvider'
+import { IEntity } from '../entities/Entity'
+import { filterEntities } from './utils'
 
 export enum MeetingOutputFooterSections {
   Notes = 'Notes',
@@ -40,6 +43,9 @@ export default function MeetingOutputFooter({
   activeSection: MeetingOutputFooterSections
   onSectionChange: (section: MeetingOutputFooterSections) => void
 }) {
+  const { items } = useEntities()
+  const count = (items: IEntity[], section: MeetingOutputFooterSections) =>
+    filterEntities(items, section).length
   return (
     <div
       className="flex items-center relative bg-white dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700"
@@ -49,13 +55,13 @@ export default function MeetingOutputFooter({
         isActive={activeSection === MeetingOutputFooterSections.Notes}
         onClick={() => onSectionChange(MeetingOutputFooterSections.Notes)}
       >
-        Notes
+        Notes ({count(items, MeetingOutputFooterSections.Notes)})
       </FooterButton>
       <FooterButton
         isActive={activeSection === MeetingOutputFooterSections.NextSteps}
         onClick={() => onSectionChange(MeetingOutputFooterSections.NextSteps)}
       >
-        Next steps
+        Next steps ({count(items, MeetingOutputFooterSections.NextSteps)})
       </FooterButton>
     </div>
   )
