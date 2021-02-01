@@ -102,11 +102,9 @@ export type IContextMenuRenderFn = (
 
 export default function Entity({
   data,
-  isLast,
   contextMenu,
 }: {
   data: IEntity
-  isLast: boolean
   contextMenu: IContextMenuRenderFn
 }) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
@@ -135,9 +133,7 @@ export default function Entity({
           <div
             ref={ref}
             className={cn({
-              'z-10 absolute right-0 mt-2 -mr-2 shadow-xl': true,
-              'top-0': !isLast,
-              'bottom-0 -mb-2': isLast,
+              'z-10 absolute right-0 top-0 mt-2 -mr-2 shadow-xl': true,
             })}
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
