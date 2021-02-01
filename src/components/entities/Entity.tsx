@@ -82,6 +82,14 @@ function EntityBody({
   )
 }
 
+export interface IContextMenuOptions {
+  closeContextMenu(): void
+}
+export type IContextMenuRenderFn = (
+  entity: IEntity,
+  options: IContextMenuOptions
+) => React.ReactNode
+
 export default function Entity({
   data,
   isLast,
@@ -89,10 +97,7 @@ export default function Entity({
 }: {
   data: IEntity
   isLast: boolean
-  contextMenu: (
-    entity: IEntity,
-    options: { closeContextMenu: () => void }
-  ) => React.ReactNode
+  contextMenu: IContextMenuRenderFn
 }) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
   const ref = useRef<React.ElementRef<'div'> | null>(null)

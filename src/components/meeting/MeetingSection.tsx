@@ -3,6 +3,7 @@ import React from 'react'
 import Title from '../core/Title'
 import { MEETING_HEADING_SECTION_HEIGHT } from '../../constants'
 import { IEntity } from '../entities/EntitiesProvider'
+import { IContextMenuRenderFn } from '../entities/Entity'
 
 export default function MeetingSection({
   title,
@@ -15,10 +16,7 @@ export default function MeetingSection({
   entities: IEntity[]
   headerRight?: React.ReactNode
   footer?: React.ReactNode
-  contextMenu: (
-    entity: IEntity,
-    options: { closeContextMenu: () => void }
-  ) => React.ReactNode
+  contextMenu: IContextMenuRenderFn
 }) {
   return (
     <div

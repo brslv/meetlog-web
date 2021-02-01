@@ -1,5 +1,5 @@
 import { ENTITY_LIST_MIN_HEIGHT } from '../../constants'
-import Entity from './Entity'
+import Entity, { IContextMenuRenderFn } from './Entity'
 import React from 'react'
 import { IEntity } from './EntitiesProvider'
 
@@ -8,10 +8,7 @@ export default function EntityList({
   contextMenu,
 }: {
   entities: IEntity[]
-  contextMenu: (
-    entity: IEntity,
-    options: { closeContextMenu: () => void }
-  ) => React.ReactNode
+  contextMenu: IContextMenuRenderFn
 }) {
   return (
     <div className="flex flex-col justify-end">
