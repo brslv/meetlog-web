@@ -18,7 +18,6 @@ function EntityCheckbox({
   const [isChecked, setIsChecked] = useState(checked)
   useEffect(() => setIsChecked(checked), [checked])
   const onClick = (e: React.MouseEvent) => {
-    e.preventDefault()
     e.stopPropagation()
     onToggle(!isChecked)
     setIsChecked((prev) => !prev)
@@ -44,7 +43,7 @@ function EntityBody({
   data: IEntity
   isContextMenuOpen: boolean
 }) {
-  const { toggleNextStep } = useEntities()
+  const { toggleChecked } = useEntities()
   return (
     <Card
       key={data.id}
@@ -58,7 +57,7 @@ function EntityBody({
           <div className="mr-4">
             <EntityCheckbox
               checked={data.output.checked}
-              onToggle={() => toggleNextStep(data.id)}
+              onToggle={() => toggleChecked(data.id)}
             />
           </div>
         ) : null}

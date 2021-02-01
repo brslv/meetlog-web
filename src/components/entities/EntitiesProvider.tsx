@@ -34,7 +34,7 @@ interface IContext {
   addItem: (text: string) => void
   removeItem: (id: number) => void
   removeFromOutput: (id: number) => void
-  toggleNextStep: (id: number) => void
+  toggleChecked: (id: number) => void
 }
 const Context = createContext<IContext | null>(null)
 
@@ -197,15 +197,15 @@ export default function EntitiesProvider({
     )
   }
 
-  const toggleNextStep = (id: number) => {
-    setItems((prev) => {
-      return prev.map((item) => {
+  const toggleChecked = (id: number) => {
+    setItems((prev) =>
+      prev.map((item) => {
         if (item.id === id && item.output?.type === 'NEXT_STEP') {
           item.output.checked = !item.output.checked
         }
         return item
       })
-    })
+    )
   }
 
   const value = {
@@ -214,7 +214,7 @@ export default function EntitiesProvider({
     addItem,
     removeItem,
     removeFromOutput,
-    toggleNextStep,
+    toggleChecked,
   }
 
   return <Context.Provider value={value}>{children}</Context.Provider>
