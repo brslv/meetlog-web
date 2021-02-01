@@ -26,8 +26,8 @@ function EntityCheckbox({
     <div
       onClick={onClick}
       className={cn({
-        'flex items-center justify-center rounded-full w-6 h-6 hover:bg-green-100 border hover:border-green-500': true,
-        'bg-gray-100 border-gray-300': !isChecked,
+        'flex items-center justify-center rounded-full w-6 h-6 border': true,
+        'bg-gray-100 hover:bg-gray-200 border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-600': !isChecked,
         'bg-green-300 border-green-500': isChecked,
       })}
     >
