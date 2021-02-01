@@ -15,7 +15,10 @@ export default function MeetingSection({
   entities: IEntity[]
   headerRight?: React.ReactNode
   footer?: React.ReactNode
-  contextMenu: (entity: IEntity) => React.ReactNode
+  contextMenu: (
+    entity: IEntity,
+    options: { closeContextMenu: () => void }
+  ) => React.ReactNode
 }) {
   return (
     <div

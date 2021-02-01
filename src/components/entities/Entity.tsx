@@ -90,13 +90,18 @@ export default function Entity({
 }: {
   data: IEntity
   isLast: boolean
-  contextMenu: (entity: IEntity) => React.ReactNode
+  contextMenu: (
+    entity: IEntity,
+    options: { closeContextMenu: () => void }
+  ) => React.ReactNode
 }) {
   const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
   const ref = useRef<React.ElementRef<'div'> | null>(null)
 
-  useOnEsc(() => setIsContextMenuOpen(false))
-  useOnClickOutside(ref, () => setIsContextMenuOpen(false))
+  const closeContextMenu = () => setIsContextMenuOpen(false)
+
+  useOnEsc(closeContextMenu)
+  useOnClickOutside(ref, closeContextMenu)
 
   return (
     <div
@@ -118,7 +123,7 @@ export default function Entity({
             })}
           >
             <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
-              {contextMenu(data)}
+              {contextMenu(data, { closeContextMenu })}
             </div>
           </div>
         ) : null}

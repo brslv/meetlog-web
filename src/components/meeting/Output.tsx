@@ -23,7 +23,9 @@ export default function Output() {
           onSectionChange={(section) => setActiveSection(section)}
         />
       }
-      contextMenu={(entity) => <OutputEntityContextMenu entity={entity} />}
+      contextMenu={(entity, options) => (
+        <OutputEntityContextMenu entity={entity} options={options} />
+      )}
     />
   )
 }

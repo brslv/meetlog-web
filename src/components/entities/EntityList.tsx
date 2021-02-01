@@ -8,7 +8,10 @@ export default function EntityList({
   contextMenu,
 }: {
   entities: IEntity[]
-  contextMenu: (entity: IEntity) => React.ReactNode
+  contextMenu: (
+    entity: IEntity,
+    options: { closeContextMenu: () => void }
+  ) => React.ReactNode
 }) {
   return (
     <div className="flex flex-col justify-end">

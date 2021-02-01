@@ -14,7 +14,9 @@ export default function Input() {
       footer={<MeetingInputFooter onSubmitInput={addItem} />}
       title="Input"
       entities={items}
-      contextMenu={(entity) => <InputEntityContextMenu entity={entity} />}
+      contextMenu={(entity, options) => (
+        <InputEntityContextMenu entity={entity} options={options} />
+      )}
     />
   )
 }

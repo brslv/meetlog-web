@@ -5,14 +5,16 @@ import { IEntity, useEntities } from '../EntitiesProvider'
 import ContextMenuItem, {
   ContextMenuItemType,
 } from '../../core/ContextMenuItem'
+import { clickContextItem } from './utils'
 
 export default function InputEntityContextMenu({
   entity,
+  options,
 }: {
   entity: IEntity
+  options: { closeContextMenu: () => void }
 }) {
   const { removeItem, convert } = useEntities()
-
   return (
     <div>
       <Title>Convert to</Title>
@@ -20,18 +22,18 @@ export default function InputEntityContextMenu({
       <ContextMenuItem
         label={'Note'}
         icon={<NoteIcon />}
-        onClick={() => convert.toNote(entity.id)}
+        onClick={clickContextItem(() => convert.toNote(entity.id), options)}
       />
       <ContextMenuItem
         label={'Next step'}
         icon={<TaskIcon />}
-        onClick={() => convert.toNextStep(entity.id)}
+        onClick={clickContextItem(() => convert.toNextStep(entity.id), options)}
       />
       <ContextMenuItem
         label={'Delete'}
         pushBottom={false}
         icon={<DeleteIcon />}
-        onClick={() => removeItem(entity.id)}
+        onClick={clickContextItem(() => removeItem(entity.id), options)}
         type={ContextMenuItemType.Error}
       />
     </div>

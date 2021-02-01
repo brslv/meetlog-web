@@ -17,7 +17,7 @@ export default function ContextMenuItem({
   pushBottom?: boolean
   type?: ContextMenuItemType
   icon: React.ReactNode
-  onClick: () => void
+  onClick: (e: React.MouseEvent) => void
 }) {
   return (
     <div
