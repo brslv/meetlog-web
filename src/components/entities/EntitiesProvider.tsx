@@ -1,4 +1,5 @@
 import React, { createContext, useContext, useState } from 'react'
+import id from '../../utils/id'
 
 export type EntityOutputType = 'NOTE' | 'NEXT_STEP'
 
@@ -133,7 +134,7 @@ export default function EntitiesProvider({
   const addItem = (text: string) => {
     setItems((prev) => [
       {
-        id: Math.random(),
+        id: id(),
         text: text as string,
         author: {
           avatar: {
