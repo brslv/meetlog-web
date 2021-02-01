@@ -28,13 +28,13 @@ interface IConvert {
   toNextStep(id: number): void
 }
 
-interface IContext {
+export interface IContext {
   items: IEntity[]
   convert: IConvert
   addItem: (text: string) => void
   removeItem: (id: number) => void
   removeFromOutput: (id: number) => void
-  toggleChecked: (id: number) => void
+  setChecked: (id: number, checked: boolean) => void
 }
 const Context = createContext<IContext | null>(null)
 
@@ -65,69 +65,6 @@ export default function EntitiesProvider({
       },
       text:
         "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
-      output: null,
-    },
-    {
-      id: 3,
-      author: {
-        name: 'Victor',
-        avatar: {
-          src: 'https://randomuser.me/api/portraits/lego/3.jpg',
-        },
-      },
-      text: 'Lorem ipsum dolor sit amet',
-      output: {
-        type: 'NOTE',
-      },
-    },
-    {
-      id: 4,
-      author: {
-        name: 'Dave',
-        avatar: {
-          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
-        },
-      },
-      text: 'Lorem ipsum dolor sit amet',
-      output: null,
-    },
-    {
-      id: 5,
-      author: {
-        name: 'Victor',
-        avatar: {
-          src: 'https://randomuser.me/api/portraits/lego/3.jpg',
-        },
-      },
-      text: 'Lorem ipsum dolor sit amet',
-      output: {
-        type: 'NEXT_STEP',
-        checked: true,
-      },
-    },
-    {
-      id: 6,
-      author: {
-        name: 'Dave',
-        avatar: {
-          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
-        },
-      },
-      text: 'Lorem ipsum dolor sit amet',
-      output: {
-        type: 'NOTE',
-      },
-    },
-    {
-      id: 7,
-      author: {
-        name: 'Dave',
-        avatar: {
-          src: 'https://randomuser.me/api/portraits/lego/4.jpg',
-        },
-      },
-      text:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard",
       output: null,
     },
   ])
@@ -197,11 +134,11 @@ export default function EntitiesProvider({
     )
   }
 
-  const toggleChecked = (id: number) => {
+  const setChecked = (id: number, checked: boolean) => {
     setItems((prev) =>
       prev.map((item) => {
         if (item.id === id && item.output?.type === 'NEXT_STEP') {
-          item.output.checked = !item.output.checked
+          item.output.checked = checked
         }
         return item
       })
@@ -214,7 +151,7 @@ export default function EntitiesProvider({
     addItem,
     removeItem,
     removeFromOutput,
-    toggleChecked,
+    setChecked,
   }
 
   return <Context.Provider value={value}>{children}</Context.Provider>

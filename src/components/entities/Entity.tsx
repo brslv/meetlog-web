@@ -13,7 +13,7 @@ function EntityCheckbox({
   onToggle,
 }: {
   checked?: boolean
-  onToggle: (isChecked: boolean) => void
+  onToggle: (checked: boolean) => void
 }) {
   const [isChecked, setIsChecked] = useState(checked)
   useEffect(() => setIsChecked(checked), [checked])
@@ -43,7 +43,7 @@ function EntityBody({
   data: IEntity
   isContextMenuOpen: boolean
 }) {
-  const { toggleChecked } = useEntities()
+  const { setChecked } = useEntities()
   return (
     <Card
       key={data.id}
@@ -53,11 +53,11 @@ function EntityBody({
       })}
     >
       <div className="flex">
-        {data.output?.type === 'NEXT_STEP' ? (
+        {data && data.output?.type === 'NEXT_STEP' ? (
           <div className="mr-4">
             <EntityCheckbox
               checked={data.output.checked}
-              onToggle={() => toggleChecked(data.id)}
+              onToggle={(checked) => setChecked(data.id, checked)}
             />
           </div>
         ) : null}

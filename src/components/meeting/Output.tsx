@@ -4,11 +4,10 @@ import MeetingOutputFooter, {
 } from './MeetingOutputFooter'
 import OutputEntityContextMenu from '../entities/contextMenu/OutputEntityContextMenu'
 import React, { useState } from 'react'
-import { useEntities } from '../entities/EntitiesProvider'
+import { IEntity } from '../entities/EntitiesProvider'
 import { filterEntities } from './utils'
 
-export default function Output() {
-  const { items } = useEntities()
+export default function Output({ items }: { items: IEntity[] }) {
   const [activeSection, setActiveSection] = useState(
     MeetingOutputFooterSections.Notes
   )
