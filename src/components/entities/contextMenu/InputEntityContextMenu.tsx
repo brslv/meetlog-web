@@ -30,6 +30,7 @@ export default function InputEntityContextMenu({
       />
       <ContextMenuItem
         label={'Delete'}
+        pushBottom={false}
         icon={<DeleteIcon />}
         onClick={() => removeItem(entity.id)}
         type={ContextMenuItemType.Error}
