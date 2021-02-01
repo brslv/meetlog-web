@@ -5,6 +5,7 @@ import cn from '../../utils/cn'
 import Card from '../core/Card'
 import useOnEsc from '../../utils/useOnEsc'
 import ReactMarkdown from 'react-markdown'
+import { Check } from '../../toolkit'
 
 export enum EntityOutputType {
   Note = 'Note',
@@ -23,36 +24,50 @@ export interface IEntity {
   output: { type: EntityOutputType } | null
 }
 
-export default function Entity({
-  data,
-  isLast,
-  contextMenu,
-}: {
-  data: IEntity
-  isLast: boolean
-  contextMenu: (entity: IEntity) => React.ReactNode
-}) {
-  const [isActionsPanelOpen, setIsActionsPanelOpen] = useState(false)
-  const ref = useRef<React.ElementRef<'div'> | null>(null)
-
-  useOnEsc(() => setIsActionsPanelOpen(false))
-  useOnClickOutside(ref, () => setIsActionsPanelOpen(false))
-
+function EntityCheckbox() {
+  const [isChecked, setIsChecked] = useState(false)
+  const onClick = (e: React.MouseEvent) => {
+    e.preventDefault()
+    e.stopPropagation()
+    setIsChecked((prev) => !prev)
+    console.log('clicked')
+  }
   return (
     <div
+      onClick={onClick}
       className={cn({
-        '__markdown flex relative pt-4': true,
+        'flex items-center justify-center rounded-full w-6 h-6 hover:bg-green-100 border hover:border-green-500': true,
+        'bg-gray-100 border-gray-300': !isChecked,
+        'bg-green-300 border-green-500': isChecked,
       })}
     >
-      <Avatar src={data.author.avatar.src} className="mr-2" />
-      <div className="w-full" onClick={() => setIsActionsPanelOpen(true)}>
-        <Card
-          key={data.id}
-          className={cn({
-            'cursor-pointer relative overflow-hidden': true,
-            'border-indigo-500 dark:border-indigo-400 dark:hover:border-indigo-400 shadow-md': isActionsPanelOpen,
-          })}
-        >
+      {isChecked ? <Check className="text-green-800" /> : null}
+    </div>
+  )
+}
+
+function EntityBody({
+  data,
+  isContextMenuOpen,
+}: {
+  data: IEntity
+  isContextMenuOpen: boolean
+}) {
+  return (
+    <Card
+      key={data.id}
+      className={cn({
+        'cursor-pointer relative overflow-hidden': true,
+        'border-indigo-500 dark:border-indigo-400 dark:hover:border-indigo-400 shadow-md': isContextMenuOpen,
+      })}
+    >
+      <div className="flex">
+        {data.output?.type === EntityOutputType.NextStep ? (
+          <div className="mr-4">
+            <EntityCheckbox />
+          </div>
+        ) : null}
+        <div>
           <div className="text-sm mb-2">
             <div className="mr-2 font-bold inline-block">
               {data.author.name}
@@ -67,9 +82,38 @@ export default function Entity({
             ) : null}
           </div>
           <ReactMarkdown>{data.text}</ReactMarkdown>
-        </Card>
+        </div>
+      </div>
+    </Card>
+  )
+}
 
-        {isActionsPanelOpen ? (
+export default function Entity({
+  data,
+  isLast,
+  contextMenu,
+}: {
+  data: IEntity
+  isLast: boolean
+  contextMenu: (entity: IEntity) => React.ReactNode
+}) {
+  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
+  const ref = useRef<React.ElementRef<'div'> | null>(null)
+
+  useOnEsc(() => setIsContextMenuOpen(false))
+  useOnClickOutside(ref, () => setIsContextMenuOpen(false))
+
+  return (
+    <div
+      className={cn({
+        '__markdown flex relative pt-4': true,
+      })}
+    >
+      <Avatar src={data.author.avatar.src} className="mr-2" />
+      <div className="w-full" onClick={() => setIsContextMenuOpen(true)}>
+        <EntityBody data={data} isContextMenuOpen={isContextMenuOpen} />
+
+        {isContextMenuOpen ? (
           <div
             ref={ref}
             className={cn({
