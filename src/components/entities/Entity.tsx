@@ -5,7 +5,7 @@ import cn from '../../utils/cn'
 import Card from '../core/Card'
 import useOnEsc from '../../utils/useOnEsc'
 import ReactMarkdown from 'react-markdown'
-import { Check } from '../../toolkit'
+import { CheckIcon, MenuIcon } from '../../toolkit'
 import { IEntity, useEntities } from './EntitiesProvider'
 
 function EntityCheckbox({
@@ -26,21 +26,23 @@ function EntityCheckbox({
     <div
       onClick={onClick}
       className={cn({
-        'flex items-center justify-center rounded-full w-6 h-6 border': true,
+        'cursor-pointer flex items-center justify-center rounded-full w-6 h-6 border': true,
         'bg-gray-100 hover:bg-gray-200 border-gray-300 dark:bg-gray-900 dark:border-gray-700 dark:hover:bg-gray-600': !isChecked,
         'bg-green-300 border-green-500': isChecked,
       })}
     >
-      {isChecked ? <Check className="text-green-800" /> : null}
+      {isChecked ? <CheckIcon className="text-green-800" /> : null}
     </div>
   )
 }
 
 function EntityBody({
   data,
+  onMenuClick,
   isContextMenuOpen,
 }: {
   data: IEntity
+  onMenuClick: () => void
   isContextMenuOpen: boolean
 }) {
   const { setChecked } = useEntities()
@@ -48,7 +50,7 @@ function EntityBody({
     <Card
       key={data.id}
       className={cn({
-        'cursor-pointer relative overflow-hidden': true,
+        'relative overflow-hidden': true,
         'border-indigo-500 dark:border-indigo-400 dark:hover:border-indigo-400 shadow-md': isContextMenuOpen,
       })}
     >
@@ -61,19 +63,27 @@ function EntityBody({
             />
           </div>
         ) : null}
-        <div>
-          <div className="text-sm mb-2">
-            <div className="mr-2 font-bold inline-block">
-              {data.author.name}
-            </div>
-            <div className="mr-2 text-sm text-gray-500 inline-block">
-              12 Jan, 15:45
-            </div>
-            {data.output ? (
-              <div className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900 rounded-full">
-                {data.output.type}
+        <div className="w-full">
+          <div className="mb-2 flex items-center justify-between">
+            <div className="text-sm">
+              <div className="mr-2 font-bold inline-block">
+                {data.author.name}
               </div>
-            ) : null}
+              <div className="mr-2 text-sm text-gray-500 inline-block">
+                12 Jan, 15:45
+              </div>
+              {data.output ? (
+                <div className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900 rounded-full">
+                  {data.output.type}
+                </div>
+              ) : null}
+            </div>
+            <div
+              onClick={onMenuClick}
+              className="cursor-pointer flex items-center justify-center hover:bg-gray-900 w-8 h-8 rounded-full"
+            >
+              <MenuIcon />
+            </div>
           </div>
           <ReactMarkdown>{data.text}</ReactMarkdown>
         </div>
@@ -114,8 +124,12 @@ export default function Entity({
       })}
     >
       <Avatar src={data.author.avatar.src} className="mr-2" />
-      <div className="w-full" onClick={() => setIsContextMenuOpen(true)}>
-        <EntityBody data={data} isContextMenuOpen={isContextMenuOpen} />
+      <div className="w-full">
+        <EntityBody
+          data={data}
+          isContextMenuOpen={isContextMenuOpen}
+          onMenuClick={() => setIsContextMenuOpen(true)}
+        />
 
         {isContextMenuOpen ? (
           <div
