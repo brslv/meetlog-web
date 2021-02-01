@@ -1,14 +1,13 @@
 import Title from '../../core/Title'
 import { DeleteIcon } from '../../../toolkit'
 import React from 'react'
-import { EntityOutputType, IEntity } from '../Entity'
-import { useEntities } from '../EntitiesProvider'
+import { EntityOutputType, IEntity, useEntities } from '../EntitiesProvider'
 
-const typeToName = (type: EntityOutputType | undefined) => {
+const typeToName = (type: EntityOutputType | undefined): string => {
   if (!type) return 'unknown'
   return {
-    [EntityOutputType.Note]: 'notes',
-    [EntityOutputType.NextStep]: 'next steps',
+    NOTE: 'notes',
+    NEXT_STEP: 'next steps',
   }[type]
 }
 

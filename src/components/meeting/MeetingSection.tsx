@@ -2,7 +2,7 @@ import EntityList from '../entities/EntityList'
 import React from 'react'
 import Title from '../core/Title'
 import { MEETING_HEADING_SECTION_HEIGHT } from '../../constants'
-import { IEntity } from '../entities/Entity'
+import { IEntity } from '../entities/EntitiesProvider'
 
 export default function MeetingSection({
   title,

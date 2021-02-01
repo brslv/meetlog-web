@@ -1,8 +1,7 @@
 import React from 'react'
 import { SECTION_FOOTER_MIN_HEIGHT } from '../../constants'
 import cn from '../../utils/cn'
-import { useEntities } from '../entities/EntitiesProvider'
-import { IEntity } from '../entities/Entity'
+import { IEntity, useEntities } from '../entities/EntitiesProvider'
 import { filterEntities } from './utils'
 
 export enum MeetingOutputFooterSections {
@@ -46,6 +45,10 @@ export default function MeetingOutputFooter({
   const { items } = useEntities()
   const count = (items: IEntity[], section: MeetingOutputFooterSections) =>
     filterEntities(items, section).length
+  const countChecked = (items: IEntity[]) =>
+    filterEntities(items, MeetingOutputFooterSections.NextSteps).filter(
+      (i) => i.output?.type === 'NEXT_STEP' && i.output.checked
+    ).length
   return (
     <div
       className="flex items-center relative bg-white dark:bg-gray-800 border-t border-gray-300 dark:border-gray-700"
@@ -61,7 +64,8 @@ export default function MeetingOutputFooter({
         isActive={activeSection === MeetingOutputFooterSections.NextSteps}
         onClick={() => onSectionChange(MeetingOutputFooterSections.NextSteps)}
       >
-        Next steps ({count(items, MeetingOutputFooterSections.NextSteps)})
+        Next steps ({countChecked(items)}/
+        {count(items, MeetingOutputFooterSections.NextSteps)})
       </FooterButton>
     </div>
   )

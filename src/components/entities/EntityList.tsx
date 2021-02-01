@@ -1,6 +1,7 @@
 import { ENTITY_LIST_MIN_HEIGHT } from '../../constants'
-import Entity, { IEntity } from './Entity'
+import Entity from './Entity'
 import React from 'react'
+import { IEntity } from './EntitiesProvider'
 
 export default function EntityList({
   entities,

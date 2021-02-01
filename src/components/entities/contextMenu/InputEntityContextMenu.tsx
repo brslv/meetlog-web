@@ -1,8 +1,7 @@
 import Title from '../../core/Title'
 import { DeleteIcon, NoteIcon, TaskIcon } from '../../../toolkit'
 import React from 'react'
-import { IEntity } from '../Entity'
-import { useEntities } from '../EntitiesProvider'
+import { IEntity, useEntities } from '../EntitiesProvider'
 import ContextMenuItem, {
   ContextMenuItemType,
 } from '../../core/ContextMenuItem'

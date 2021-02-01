@@ -1,5 +1,26 @@
 import React, { createContext, useContext, useState } from 'react'
-import { EntityOutputType, IEntity } from './Entity'
+
+export type EntityOutputType = 'NOTE' | 'NEXT_STEP'
+
+export interface IEntity {
+  id: number
+  text: string
+  author: {
+    name: string
+    avatar: {
+      src: string
+    }
+  }
+  output: INextStepOutput | INoteOutput | null
+}
+
+export interface INextStepOutput {
+  type: 'NEXT_STEP'
+  checked: boolean
+}
+export interface INoteOutput {
+  type: 'NOTE'
+}
 
 interface IConvert {
   toNote(id: number): void
@@ -12,6 +33,7 @@ interface IContext {
   addItem: (text: string) => void
   removeItem: (id: number) => void
   removeFromOutput: (id: number) => void
+  toggleNextStep: (id: number) => void
 }
 const Context = createContext<IContext | null>(null)
 
@@ -20,7 +42,7 @@ export default function EntitiesProvider({
 }: {
   children: React.ReactNode
 }) {
-  const [items, setItems] = useState([
+  const [items, setItems] = useState<IEntity[]>([
     {
       id: 1,
       author: {
@@ -54,7 +76,7 @@ export default function EntitiesProvider({
       },
       text: 'Lorem ipsum dolor sit amet',
       output: {
-        type: EntityOutputType.Note,
+        type: 'NOTE',
       },
     },
     {
@@ -78,7 +100,8 @@ export default function EntitiesProvider({
       },
       text: 'Lorem ipsum dolor sit amet',
       output: {
-        type: EntityOutputType.NextStep,
+        type: 'NEXT_STEP',
+        checked: true,
       },
     },
     {
@@ -90,7 +113,9 @@ export default function EntitiesProvider({
         },
       },
       text: 'Lorem ipsum dolor sit amet',
-      output: null,
+      output: {
+        type: 'NOTE',
+      },
     },
     {
       id: 7,
@@ -130,7 +155,23 @@ export default function EntitiesProvider({
     setItems((prev) =>
       prev.map((item) => {
         if (item.id === id) {
-          item.output = { type }
+          let output = null
+          switch (type) {
+            case 'NOTE': {
+              output = {
+                type: 'NOTE' as const,
+              }
+              break
+            }
+            case 'NEXT_STEP': {
+              output = {
+                type: 'NEXT_STEP' as const,
+                checked: false,
+              }
+              break
+            }
+          }
+          item.output = output
         }
         return item
       })
@@ -139,10 +180,10 @@ export default function EntitiesProvider({
 
   const convert = {
     toNote(id: number) {
-      convertTo(EntityOutputType.Note, id)
+      convertTo('NOTE', id)
     },
     toNextStep(id: number) {
-      convertTo(EntityOutputType.NextStep, id)
+      convertTo('NEXT_STEP', id)
     },
   }
 
@@ -155,12 +196,24 @@ export default function EntitiesProvider({
     )
   }
 
+  const toggleNextStep = (id: number) => {
+    setItems((prev) => {
+      return prev.map((item) => {
+        if (item.id === id && item.output?.type === 'NEXT_STEP') {
+          item.output.checked = !item.output.checked
+        }
+        return item
+      })
+    })
+  }
+
   const value = {
     items,
     convert,
     addItem,
     removeItem,
     removeFromOutput,
+    toggleNextStep,
   }
 
   return <Context.Provider value={value}>{children}</Context.Provider>

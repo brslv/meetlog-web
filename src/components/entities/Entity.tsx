@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useOnClickOutside from '../../utils/useOnOutsideClick'
 import Avatar from '../Avatar'
 import cn from '../../utils/cn'
@@ -6,31 +6,22 @@ import Card from '../core/Card'
 import useOnEsc from '../../utils/useOnEsc'
 import ReactMarkdown from 'react-markdown'
 import { Check } from '../../toolkit'
+import { IEntity, useEntities } from './EntitiesProvider'
 
-export enum EntityOutputType {
-  Note = 'Note',
-  NextStep = 'NextStep',
-}
-
-export interface IEntity {
-  id: number
-  text: string
-  author: {
-    name: string
-    avatar: {
-      src: string
-    }
-  }
-  output: { type: EntityOutputType } | null
-}
-
-function EntityCheckbox() {
-  const [isChecked, setIsChecked] = useState(false)
+function EntityCheckbox({
+  checked,
+  onToggle,
+}: {
+  checked?: boolean
+  onToggle: (isChecked: boolean) => void
+}) {
+  const [isChecked, setIsChecked] = useState(checked)
+  useEffect(() => setIsChecked(checked), [checked])
   const onClick = (e: React.MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    onToggle(!isChecked)
     setIsChecked((prev) => !prev)
-    console.log('clicked')
   }
   return (
     <div
@@ -53,6 +44,7 @@ function EntityBody({
   data: IEntity
   isContextMenuOpen: boolean
 }) {
+  const { toggleNextStep } = useEntities()
   return (
     <Card
       key={data.id}
@@ -62,9 +54,12 @@ function EntityBody({
       })}
     >
       <div className="flex">
-        {data.output?.type === EntityOutputType.NextStep ? (
+        {data.output?.type === 'NEXT_STEP' ? (
           <div className="mr-4">
-            <EntityCheckbox />
+            <EntityCheckbox
+              checked={data.output.checked}
+              onToggle={() => toggleNextStep(data.id)}
+            />
           </div>
         ) : null}
         <div>
