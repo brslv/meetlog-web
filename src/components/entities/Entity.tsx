@@ -6,7 +6,7 @@ import Card from '../core/Card'
 import useOnEsc from '../../utils/useOnEsc'
 import ReactMarkdown from 'react-markdown'
 import { CheckIcon, MenuIcon } from '../../toolkit'
-import { IEntity, useEntities } from './EntitiesProvider'
+import { IEntity, useEntities, entityOutputTypeToHumanReadable } from './EntitiesProvider'
 
 function EntityCheckbox({
   checked,
@@ -120,7 +120,7 @@ function EntityBody({
               </div>
               {data.output ? (
                 <div className="inline-block px-2 py-1 text-xs bg-indigo-100 dark:bg-indigo-900 rounded-full">
-                  {data.output.type}
+                  {entityOutputTypeToHumanReadable(data.output.type)}
                 </div>
               ) : null}
             </div>

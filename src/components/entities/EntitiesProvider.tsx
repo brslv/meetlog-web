@@ -2,6 +2,12 @@ import React, { createContext, useContext, useState } from 'react'
 import id from '../../utils/id'
 
 export type EntityOutputType = 'NOTE' | 'NEXT_STEP'
+export const entityOutputTypeToHumanReadable = (type: EntityOutputType): string => {
+  switch(type) {
+    case 'NOTE': return 'Note'
+    case 'NEXT_STEP': return 'Next step'
+  }
+}
 
 export interface IEntity {
   id: number
