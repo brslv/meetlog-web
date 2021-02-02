@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import useOnClickOutside from '../../utils/useOnOutsideClick'
 import Avatar from '../Avatar'
 import cn from '../../utils/cn'
@@ -36,16 +36,62 @@ function EntityCheckbox({
   )
 }
 
+interface IMenuPos {
+  top?: number
+  left?: number
+  right?: number
+  bottom?: number
+}
 function EntityBody({
   data,
-  onMenuClick,
-  isContextMenuOpen,
+  contextMenu,
 }: {
   data: IEntity
-  onMenuClick: () => void
-  isContextMenuOpen: boolean
+  contextMenu: IContextMenuRenderFn
 }) {
   const { setChecked } = useEntities()
+  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
+  const contextMenuRef = useRef<React.ElementRef<'div'> | null>(null)
+  const menuIconRef = useRef<React.ElementRef<'div'> | null>(null)
+  const [menuPos, setMenuPos] = useState<IMenuPos>({
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  })
+
+  const onMenuClick = () => setIsContextMenuOpen(true)
+  const closeContextMenu = () => setIsContextMenuOpen(false)
+
+  useOnEsc(closeContextMenu)
+  useOnClickOutside(contextMenuRef, closeContextMenu)
+
+  useLayoutEffect(() => {
+    if (!menuIconRef.current || !contextMenuRef.current) return
+
+    /**
+     * Here we do some calculations to determine the "fixed" position
+     * of the context menu. We make sure that it's not bleeding
+     * on the bottom and the right side of the screen.
+     */
+
+    const menuRect = contextMenuRef.current?.getBoundingClientRect()
+    const iconRect = menuIconRef.current?.getBoundingClientRect()
+    const inBottom =
+      menuRect.height + iconRect.top <=
+      (window.innerHeight || document.documentElement.clientHeight)
+    const inRight =
+      menuRect.width + iconRect.right <=
+      (window.innerWidth || document.documentElement.clientWidth)
+
+    setMenuPos({
+      top: !inBottom ? undefined : iconRect.top + 40,
+      left: !inRight ? undefined : iconRect.left - 100,
+      bottom: !inBottom ? iconRect.bottom - iconRect.top : undefined,
+      right: !inRight ? 10 : undefined,
+    })
+  }, [isContextMenuOpen])
+
   return (
     <Card
       key={data.id}
@@ -78,11 +124,27 @@ function EntityBody({
                 </div>
               ) : null}
             </div>
-            <div
-              onClick={onMenuClick}
-              className="cursor-pointer flex items-center justify-center hover:bg-gray-900 w-8 h-8 rounded-full"
-            >
-              <MenuIcon />
+            <div className="relative">
+              <div
+                ref={menuIconRef}
+                onClick={onMenuClick}
+                className="cursor-pointer flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-900 w-8 h-8 rounded-full"
+              >
+                <MenuIcon />
+              </div>
+
+              <div
+                ref={contextMenuRef}
+                style={{ ...menuPos }}
+                className={cn({
+                  'z-10 fixed fixed shadow-xl': true,
+                  hidden: !isContextMenuOpen,
+                })}
+              >
+                <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
+                  {contextMenu(data, { closeContextMenu })}
+                </div>
+              </div>
             </div>
           </div>
           <ReactMarkdown>{data.text}</ReactMarkdown>
@@ -107,14 +169,6 @@ export default function Entity({
   data: IEntity
   contextMenu: IContextMenuRenderFn
 }) {
-  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
-  const ref = useRef<React.ElementRef<'div'> | null>(null)
-
-  const closeContextMenu = () => setIsContextMenuOpen(false)
-
-  useOnEsc(closeContextMenu)
-  useOnClickOutside(ref, closeContextMenu)
-
   return (
     <div
       className={cn({
@@ -123,24 +177,7 @@ export default function Entity({
     >
       <Avatar src={data.author.avatar.src} className="mr-2" />
       <div className="w-full">
-        <EntityBody
-          data={data}
-          isContextMenuOpen={isContextMenuOpen}
-          onMenuClick={() => setIsContextMenuOpen(true)}
-        />
-
-        {isContextMenuOpen ? (
-          <div
-            ref={ref}
-            className={cn({
-              'z-10 absolute right-0 top-0 mt-2 -mr-2 shadow-xl': true,
-            })}
-          >
-            <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
-              {contextMenu(data, { closeContextMenu })}
-            </div>
-          </div>
-        ) : null}
+        <EntityBody data={data} contextMenu={contextMenu} />
       </div>
     </div>
   )

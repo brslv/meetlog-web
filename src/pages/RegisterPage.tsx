@@ -12,7 +12,7 @@ export default function RegisterPage() {
           className="absolute"
           style={{
             top: '50%',
-            left: '50%',
+            right: '50%',
             transform: `translate(-50%, -50%)`,
           }}
         >
