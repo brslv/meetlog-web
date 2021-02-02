@@ -2,9 +2,7 @@ import Title from '../../core/Title'
 import { DeleteIcon, NoteIcon, TaskIcon } from '../../../toolkit'
 import React from 'react'
 import { IEntity, useEntities } from '../EntitiesProvider'
-import ContextMenuItem, {
-  ContextMenuItemType,
-} from '../../core/ContextMenuItem'
+import ContextMenuItem from '../../core/ContextMenuItem'
 import { clickContextItem } from './utils'
 
 export default function InputEntityContextMenu({
@@ -34,7 +32,7 @@ export default function InputEntityContextMenu({
         pushBottom={false}
         icon={<DeleteIcon />}
         onClick={clickContextItem(() => removeItem(entity.id), options)}
-        type={ContextMenuItemType.Error}
+        type='error'
       />
     </div>
   )

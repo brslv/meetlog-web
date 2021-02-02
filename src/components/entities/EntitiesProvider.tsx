@@ -98,7 +98,7 @@ export default function EntitiesProvider({
   const convertTo = (type: EntityOutputType, id: number) => {
     setItems((prev) =>
       prev.map((item) => {
-        if (item.id === id) {
+        if (item.id === id && item.output?.type !== type) {
           let output = null
           switch (type) {
             case 'NOTE': {

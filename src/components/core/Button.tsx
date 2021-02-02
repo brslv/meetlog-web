@@ -2,15 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import cn from '../../utils/cn'
 
-export enum ButtonSize {
-  Sm,
-  Md,
-}
-
-export enum ButtonVariant {
-  Primary = 'Primary',
-  Error = 'Error',
-}
+type ButtonSize = "sm" | "md"
+export type ButtonVariant = "primary" | "error"
 
 const cls = ({
   size,
@@ -26,16 +19,16 @@ const cls = ({
   return cn(
     {
       'rounded text-white focus:ring focus:outline-none': true,
-      'px-4 py-1.5': size === ButtonSize.Md,
-      'px-2 py-1 text-sm': size === ButtonSize.Sm,
+      'px-4 py-1.5': size === "md",
+      'px-2 py-1 text-sm': size === "sm",
       'bg-indigo-500 hover:bg-indigo-600':
-        !outline && variant === ButtonVariant.Primary,
+        !outline && variant === "primary",
       'bg-red-500 hover:bg-red-600':
-        !outline && variant === ButtonVariant.Error,
+        !outline && variant === "error",
       'border border-indigo-500 text-indigo-500': !!(
-        outline && ButtonVariant.Primary
+        outline && "primary"
       ),
-      'border border-red-500 text-red-500': !!(outline && ButtonVariant.Error),
+      'border border-red-500 text-red-500': !!(outline && "error"),
     },
     className
   )
@@ -43,8 +36,8 @@ const cls = ({
 
 export function LinkButton({
   children,
-  size = ButtonSize.Md,
-  variant = ButtonVariant.Primary,
+  size = "md",
+  variant = "primary",
   outline = false,
   className,
   ...props
@@ -64,8 +57,8 @@ export function LinkButton({
 
 export default function Button({
   children,
-  size = ButtonSize.Md,
-  variant = ButtonVariant.Primary,
+  size = "md",
+  variant = "primary",
   outline = false,
   className,
   ...props
