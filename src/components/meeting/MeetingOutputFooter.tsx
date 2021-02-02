@@ -4,10 +4,7 @@ import cn from '../../utils/cn'
 import { IEntity, useEntities } from '../entities/EntitiesProvider'
 import { filterEntities } from './utils'
 
-export enum MeetingOutputFooterSections {
-  Notes = 'Notes',
-  NextSteps = 'NextSteps',
-}
+export type MeetingOutputFooterSections = 'notes' | 'nextSteps'
 
 function FooterButton({
   isActive,

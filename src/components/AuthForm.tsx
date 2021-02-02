@@ -4,15 +4,12 @@ import Button from './core/Button'
 import Title from './core/Title'
 import Form from './core/Form'
 
-export enum AuthFormMode {
-  Login,
-  Register,
-}
+export type AuthFormMode = 'login' | 'register';
 
 export function AuthForm({ mode }: { mode: AuthFormMode }) {
   return (
     <div id="auth-form">
-      <Title bg>{mode === AuthFormMode.Register ? 'Register' : 'Login'}</Title>
+      <Title bg>{mode === 'register' ? 'Register' : 'Login'}</Title>
       <div
         className="bg-white border border-gray-300 dark:bg-gray-800 dark:border-gray-700 p-4 rounded"
         style={{ minWidth: 300, maxWidth: 350 }}
@@ -24,7 +21,7 @@ export function AuthForm({ mode }: { mode: AuthFormMode }) {
           <Label pushBottom text="Password">
             <Input type="password" placeholder="Password" />
           </Label>
-          {mode === AuthFormMode.Register ? (
+          {mode === 'register' ? (
             <Label pushBottom text="Repeat password">
               <Input
                 type="password"
@@ -34,7 +31,7 @@ export function AuthForm({ mode }: { mode: AuthFormMode }) {
             </Label>
           ) : null}
           <Button type="submit" className="w-full mt-4">
-            {mode === AuthFormMode.Login ? 'Login' : 'Register'}
+            {mode === 'login' ? 'Login' : 'Register'}
           </Button>
         </Form>
       </div>

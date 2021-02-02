@@ -16,7 +16,7 @@ export default function RegisterPage() {
             transform: `translate(-50%, -50%)`,
           }}
         >
-          <AuthForm mode={AuthFormMode.Register} />
+          <AuthForm mode="register" />
           <div className="text-center text-sm text-gray-500 mt-4">
             <Link to="/login">Login</Link>
           </div>
