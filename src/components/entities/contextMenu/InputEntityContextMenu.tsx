@@ -18,12 +18,12 @@ export default function InputEntityContextMenu({
       <Title>Convert to</Title>
 
       <ContextMenuItem
-        label={'Note'}
+        label="Note"
         icon={<NoteIcon />}
         onClick={clickContextItem(() => convert.toNote(entity.id), options)}
       />
       <ContextMenuItem
-        label={'Next step'}
+        label="Next step"
         icon={<TaskIcon />}
         onClick={clickContextItem(() => convert.toNextStep(entity.id), options)}
       />
@@ -32,7 +32,7 @@ export default function InputEntityContextMenu({
         pushBottom={false}
         icon={<DeleteIcon />}
         onClick={clickContextItem(() => removeItem(entity.id), options)}
-        type='error'
+        type="error"
       />
     </div>
   )
