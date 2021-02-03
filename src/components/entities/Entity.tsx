@@ -54,7 +54,12 @@ function EntityBody({
   contextMenu: IContextMenuRenderFn
 }) {
   const { setChecked } = useEntities()
-  const { isOpen, open, close, ref: contextMenuRef } = useContextMenu()
+  const {
+    isOpen: isContextMenuOpen,
+    open: openContextMenu,
+    close: closeContextMenu,
+    ref: contextMenuRef,
+  } = useContextMenu()
   const menuIconRef = useRef<React.ElementRef<'div'> | null>(null)
   const [menuPos, setMenuPos] = useState<IMenuPos>({
     top: 0,
@@ -62,9 +67,6 @@ function EntityBody({
     bottom: 0,
     left: 0,
   })
-
-  const onMenuClick = open
-  const closeContextMenu = close
 
   useLayoutEffect(() => {
     if (!menuIconRef.current || !contextMenuRef.current) return
@@ -90,15 +92,13 @@ function EntityBody({
       bottom: !inBottom ? iconRect.bottom - iconRect.top : undefined,
       right: !inRight ? 10 : undefined,
     })
-  }, [isOpen, contextMenuRef])
+  }, [isContextMenuOpen, contextMenuRef])
 
   return (
     <Card
       key={data.id}
-      className={cn({
-        'relative overflow-hidden': true,
-        'border-indigo-500 dark:border-indigo-400 dark:hover:border-indigo-400 shadow-md': isOpen,
-      })}
+      className="relative overflow-hidden"
+      isFocused={isContextMenuOpen}
     >
       <div className="flex">
         {data && data.output?.type === 'NEXT_STEP' ? (
@@ -128,7 +128,7 @@ function EntityBody({
               <IconButton
                 ref={menuIconRef}
                 icon={<MenuIcon />}
-                onClick={onMenuClick}
+                onClick={openContextMenu}
               />
 
               <div
@@ -136,7 +136,7 @@ function EntityBody({
                 style={{ ...menuPos }}
                 className={cn({
                   'z-10 fixed fixed shadow-xl': true,
-                  hidden: !isOpen,
+                  hidden: !isContextMenuOpen,
                 })}
               >
                 {contextMenu(data, { closeContextMenu })}
