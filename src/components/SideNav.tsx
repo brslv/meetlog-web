@@ -97,7 +97,10 @@ export default function SideNav() {
           <DarkModeToggle />
         </SideNavItem>
         <SideNavItem hint="Profile settings" hintLeftSpacing={14} pushY={false}>
-          <Avatar src="https://randomuser.me/api/portraits/lego/0.jpg" />
+          <Avatar
+            src="https://randomuser.me/api/portraits/lego/0.jpg"
+            placeholder="ST"
+          />
         </SideNavItem>
       </div>
 

@@ -3,7 +3,7 @@ import { Container } from '../components/core/Container'
 import Page from '../components/core/Page'
 import SideNav, { SideNavPusher } from '../components/SideNav'
 import Title from '../components/core/Title'
-import BuddiesList from '../components/BuddiesList'
+import BuddiesList from '../components/buddies/BuddiesList'
 
 export default function BuddiesListPage() {
   return (

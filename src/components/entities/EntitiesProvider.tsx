@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState } from 'react'
 import id from '../../utils/id'
+import { IBuddy } from '../buddies/BuddiesList'
 
 export type EntityOutputType = 'NOTE' | 'NEXT_STEP'
 export const entityOutputTypeToHumanReadable = (
@@ -16,12 +17,7 @@ export const entityOutputTypeToHumanReadable = (
 export interface IEntity {
   id: number
   text: string
-  author: {
-    name: string
-    avatar: {
-      src: string
-    }
-  }
+  author: IBuddy
   output: INextStepOutput | INoteOutput | null
 }
 
@@ -57,24 +53,14 @@ export default function EntitiesProvider({
     {
       id: 1,
       author: {
+        id: 1,
+        email: 'sami@sam.com',
         name: 'Samuel',
         avatar: {
           src: 'https://randomuser.me/api/portraits/lego/1.jpg',
         },
       },
       text: 'Lorem ipsum dolor sit amet',
-      output: null,
-    },
-    {
-      id: 2,
-      author: {
-        name: 'Johan',
-        avatar: {
-          src: 'https://randomuser.me/api/portraits/lego/2.jpg',
-        },
-      },
-      text:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ",
       output: null,
     },
   ])
@@ -84,6 +70,8 @@ export default function EntitiesProvider({
         id: id(),
         text: text as string,
         author: {
+          id: 1,
+          email: 'stam@stam.com',
           avatar: {
             src: 'https://randomuser.me/api/portraits/lego/8.jpg',
           },

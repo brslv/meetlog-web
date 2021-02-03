@@ -171,7 +171,7 @@ export default function Entity({
         '__markdown flex relative pt-4': true,
       })}
     >
-      <Avatar src={data.author.avatar.src} className="mr-2" />
+      <Avatar src={data.author.avatar?.src} placeholder="ST" className="mr-2" />
       <div className="w-full">
         <EntityBody data={data} contextMenu={contextMenu} />
       </div>
