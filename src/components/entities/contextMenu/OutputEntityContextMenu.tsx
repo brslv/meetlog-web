@@ -1,9 +1,9 @@
-import Title from '../../core/Title'
 import { DeleteIcon } from '../../../toolkit'
 import React from 'react'
 import { EntityOutputType, IEntity, useEntities } from '../EntitiesProvider'
 import { clickContextItem } from './utils'
-import ContextMenuItem from '../../core/ContextMenuItem'
+import ContextMenuItem from '../../core/contextMenu/ContextMenuItem'
+import ContextMenu from '../../core/contextMenu/ContextMenu'
 
 const typeToName = (type: EntityOutputType | undefined): string => {
   if (!type) return 'unknown'
@@ -22,13 +22,12 @@ export default function OutputEntityContextMenu({
 }) {
   const { removeFromOutput } = useEntities()
   return (
-    <div>
-      <Title>Actions</Title>
+    <ContextMenu title="Actions">
       <ContextMenuItem
         label={`Remove from ${typeToName(entity.output?.type)}`}
         icon={<DeleteIcon />}
         onClick={clickContextItem(() => removeFromOutput(entity.id), options)}
       />
-    </div>
+    </ContextMenu>
   )
 }

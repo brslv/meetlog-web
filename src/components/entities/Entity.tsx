@@ -1,9 +1,7 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react'
-import useOnClickOutside from '../../utils/useOnOutsideClick'
 import Avatar from '../Avatar'
 import cn from '../../utils/cn'
 import Card from '../core/Card'
-import useOnEsc from '../../utils/useOnEsc'
 import ReactMarkdown from 'react-markdown'
 import { CheckIcon, MenuIcon } from '../../toolkit'
 import {
@@ -12,6 +10,7 @@ import {
   entityOutputTypeToHumanReadable,
 } from './EntitiesProvider'
 import { IconButton } from '../core/Button'
+import useContextMenu from '../core/contextMenu/useContextMenu'
 
 function EntityCheckbox({
   checked,
@@ -55,8 +54,7 @@ function EntityBody({
   contextMenu: IContextMenuRenderFn
 }) {
   const { setChecked } = useEntities()
-  const [isContextMenuOpen, setIsContextMenuOpen] = useState(false)
-  const contextMenuRef = useRef<React.ElementRef<'div'> | null>(null)
+  const { isOpen, open, close, ref: contextMenuRef } = useContextMenu()
   const menuIconRef = useRef<React.ElementRef<'div'> | null>(null)
   const [menuPos, setMenuPos] = useState<IMenuPos>({
     top: 0,
@@ -65,11 +63,8 @@ function EntityBody({
     left: 0,
   })
 
-  const onMenuClick = () => setIsContextMenuOpen(true)
-  const closeContextMenu = () => setIsContextMenuOpen(false)
-
-  useOnEsc(closeContextMenu)
-  useOnClickOutside(contextMenuRef, closeContextMenu)
+  const onMenuClick = open
+  const closeContextMenu = close
 
   useLayoutEffect(() => {
     if (!menuIconRef.current || !contextMenuRef.current) return
@@ -95,14 +90,14 @@ function EntityBody({
       bottom: !inBottom ? iconRect.bottom - iconRect.top : undefined,
       right: !inRight ? 10 : undefined,
     })
-  }, [isContextMenuOpen])
+  }, [isOpen, contextMenuRef])
 
   return (
     <Card
       key={data.id}
       className={cn({
         'relative overflow-hidden': true,
-        'border-indigo-500 dark:border-indigo-400 dark:hover:border-indigo-400 shadow-md': isContextMenuOpen,
+        'border-indigo-500 dark:border-indigo-400 dark:hover:border-indigo-400 shadow-md': isOpen,
       })}
     >
       <div className="flex">
@@ -141,12 +136,10 @@ function EntityBody({
                 style={{ ...menuPos }}
                 className={cn({
                   'z-10 fixed fixed shadow-xl': true,
-                  hidden: !isContextMenuOpen,
+                  hidden: !isOpen,
                 })}
               >
-                <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
-                  {contextMenu(data, { closeContextMenu })}
-                </div>
+                {contextMenu(data, { closeContextMenu })}
               </div>
             </div>
           </div>

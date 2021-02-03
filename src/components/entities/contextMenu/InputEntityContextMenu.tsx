@@ -1,9 +1,9 @@
-import Title from '../../core/Title'
 import { DeleteIcon, NoteIcon, TaskIcon } from '../../../toolkit'
 import React from 'react'
 import { IEntity, useEntities } from '../EntitiesProvider'
-import ContextMenuItem from '../../core/ContextMenuItem'
+import ContextMenuItem from '../../core/contextMenu/ContextMenuItem'
 import { clickContextItem } from './utils'
+import ContextMenu from '../../core/contextMenu/ContextMenu'
 
 export default function InputEntityContextMenu({
   entity,
@@ -14,9 +14,7 @@ export default function InputEntityContextMenu({
 }) {
   const { removeItem, convert } = useEntities()
   return (
-    <div>
-      <Title>Convert to</Title>
-
+    <ContextMenu title="Convert to">
       <ContextMenuItem
         label="Note"
         icon={<NoteIcon />}
@@ -34,6 +32,6 @@ export default function InputEntityContextMenu({
         onClick={clickContextItem(() => removeItem(entity.id), options)}
         type="error"
       />
-    </div>
+    </ContextMenu>
   )
 }
