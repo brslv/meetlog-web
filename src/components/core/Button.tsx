@@ -2,8 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import cn from '../../utils/cn'
 
-type ButtonSize = "sm" | "md"
-export type ButtonVariant = "primary" | "error"
+type ButtonSize = 'sm' | 'md'
+export type ButtonVariant = 'primary' | 'error'
 
 const cls = ({
   size,
@@ -19,16 +19,12 @@ const cls = ({
   return cn(
     {
       'rounded text-white focus:ring focus:outline-none': true,
-      'px-4 py-1.5': size === "md",
-      'px-2 py-1 text-sm': size === "sm",
-      'bg-indigo-500 hover:bg-indigo-600':
-        !outline && variant === "primary",
-      'bg-red-500 hover:bg-red-600':
-        !outline && variant === "error",
-      'border border-indigo-500 text-indigo-500': !!(
-        outline && "primary"
-      ),
-      'border border-red-500 text-red-500': !!(outline && "error"),
+      'px-4 py-1.5': size === 'md',
+      'px-2 py-1 text-sm': size === 'sm',
+      'bg-indigo-500 hover:bg-indigo-600': !outline && variant === 'primary',
+      'bg-red-500 hover:bg-red-600': !outline && variant === 'error',
+      'border border-indigo-500 text-indigo-500': !!(outline && 'primary'),
+      'border border-red-500 text-red-500': !!(outline && 'error'),
     },
     className
   )
@@ -36,8 +32,8 @@ const cls = ({
 
 export function LinkButton({
   children,
-  size = "md",
-  variant = "primary",
+  size = 'md',
+  variant = 'primary',
   outline = false,
   className,
   ...props
@@ -55,10 +51,30 @@ export function LinkButton({
   )
 }
 
+export const IconButton = React.forwardRef<
+  HTMLDivElement,
+  { icon: React.ReactNode } & React.ComponentPropsWithoutRef<'div'>
+>(({ icon, ...props }, ref) => {
+  return (
+    <div
+      ref={ref}
+      {...props}
+      className={cn(
+        {
+          'cursor-pointer flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-900 w-8 h-8 rounded-full': true,
+        },
+        props.className
+      )}
+    >
+      {icon}
+    </div>
+  )
+})
+
 export default function Button({
   children,
-  size = "md",
-  variant = "primary",
+  size = 'md',
+  variant = 'primary',
   outline = false,
   className,
   ...props

@@ -6,7 +6,12 @@ import Card from '../core/Card'
 import useOnEsc from '../../utils/useOnEsc'
 import ReactMarkdown from 'react-markdown'
 import { CheckIcon, MenuIcon } from '../../toolkit'
-import { IEntity, useEntities, entityOutputTypeToHumanReadable } from './EntitiesProvider'
+import {
+  IEntity,
+  useEntities,
+  entityOutputTypeToHumanReadable,
+} from './EntitiesProvider'
+import { IconButton } from '../core/Button'
 
 function EntityCheckbox({
   checked,
@@ -125,13 +130,11 @@ function EntityBody({
               ) : null}
             </div>
             <div className="relative">
-              <div
+              <IconButton
                 ref={menuIconRef}
+                icon={<MenuIcon />}
                 onClick={onMenuClick}
-                className="cursor-pointer flex items-center justify-center hover:bg-gray-100 dark:hover:bg-gray-900 w-8 h-8 rounded-full"
-              >
-                <MenuIcon />
-              </div>
+              />
 
               <div
                 ref={contextMenuRef}
