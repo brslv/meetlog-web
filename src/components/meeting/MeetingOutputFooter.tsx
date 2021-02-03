@@ -1,10 +1,14 @@
 import React from 'react'
 import { SECTION_FOOTER_MIN_HEIGHT } from '../../constants'
 import cn from '../../utils/cn'
-import { IEntity, useEntities } from '../entities/EntitiesProvider'
+import {
+  IEntity,
+  useEntities,
+  EntityOutputType,
+} from '../entities/EntitiesProvider'
 import { filterEntities } from './utils'
 
-export type MeetingOutputFooterSections = 'notes' | 'nextSteps'
+export type MeetingOutputFooterSections = EntityOutputType
 
 function FooterButton({
   isActive,
@@ -43,7 +47,7 @@ export default function MeetingOutputFooter({
   const count = (items: IEntity[], section: MeetingOutputFooterSections) =>
     filterEntities(items, section).length
   const countChecked = (items: IEntity[]) =>
-    filterEntities(items, MeetingOutputFooterSections.NextSteps).filter(
+    filterEntities(items, 'NEXT_STEP').filter(
       (i) => i.output?.type === 'NEXT_STEP' && i.output.checked
     ).length
   return (
@@ -52,17 +56,16 @@ export default function MeetingOutputFooter({
       style={{ height: SECTION_FOOTER_MIN_HEIGHT }}
     >
       <FooterButton
-        isActive={activeSection === MeetingOutputFooterSections.Notes}
-        onClick={() => onSectionChange(MeetingOutputFooterSections.Notes)}
+        isActive={activeSection === 'NOTE'}
+        onClick={() => onSectionChange('NOTE')}
       >
-        Notes ({count(items, MeetingOutputFooterSections.Notes)})
+        Notes ({count(items, 'NOTE')})
       </FooterButton>
       <FooterButton
-        isActive={activeSection === MeetingOutputFooterSections.NextSteps}
-        onClick={() => onSectionChange(MeetingOutputFooterSections.NextSteps)}
+        isActive={activeSection === 'NEXT_STEP'}
+        onClick={() => onSectionChange('NEXT_STEP')}
       >
-        Next steps ({countChecked(items)}/
-        {count(items, MeetingOutputFooterSections.NextSteps)})
+        Next steps ({countChecked(items)}/{count(items, 'NEXT_STEP')})
       </FooterButton>
     </div>
   )

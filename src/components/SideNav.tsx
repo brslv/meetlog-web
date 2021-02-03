@@ -1,10 +1,6 @@
 import React, { useState } from 'react'
 import { ReactComponent as Logo } from '../assets/images/logo.svg'
-import {
-  RiHomeSmile2Line as HomeIcon,
-  RiAddBoxLine as AddIcon,
-  RiSettingsLine as SettingsIcon,
-} from 'react-icons/ri'
+
 import cn from '../utils/cn'
 import Modal from './core/Modal'
 import Title from './core/Title'
@@ -12,6 +8,7 @@ import MeetingForm from './meeting/MeetingForm'
 import { Link } from 'react-router-dom'
 import DarkModeToggle from './darkMode/DarkModeToggle'
 import Avatar from './Avatar'
+import { BuddiesIcon, HomeIcon, AddIcon, SettingsIcon } from '../toolkit'
 
 export function SideNavPusher({ children }: { children: React.ReactNode }) {
   return <div className="ml-20">{children}</div>
@@ -82,6 +79,11 @@ export default function SideNav() {
         <Link to="/d">
           <SideNavItem hint="Dashboard">
             <HomeIcon className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer w-7 h-7" />
+          </SideNavItem>
+        </Link>
+        <Link to="/bl">
+          <SideNavItem hint="Buddies list">
+            <BuddiesIcon className="hover:text-indigo-600 dark:hover:text-indigo-400 cursor-pointer w-7 h-7" />
           </SideNavItem>
         </Link>
         <Link to="/">
