@@ -1,8 +1,8 @@
 import Page from '../components/core/Page'
 import SideNav, { SideNavPusher } from '../components/SideNav'
 import React from 'react'
-import Input from '../components/meeting/Input'
-import Output from '../components/meeting/Output'
+import Input from '../components/meetings/Input'
+import Output from '../components/meetings/Output'
 import { useEntities } from '../components/entities/EntitiesProvider'
 
 export default function MeetingPage() {
