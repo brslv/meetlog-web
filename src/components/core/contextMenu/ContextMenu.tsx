@@ -9,7 +9,7 @@ export default function ContextMenu({
   children: React.ReactNode
 }) {
   return (
-    <div className="p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
+    <div className="shadow-xl p-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded">
       <Title>{title}</Title>
 
       {children}

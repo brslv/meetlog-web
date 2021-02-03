@@ -135,7 +135,7 @@ function EntityBody({
                 ref={contextMenuRef}
                 style={{ ...menuPos }}
                 className={cn({
-                  'z-10 fixed fixed shadow-xl': true,
+                  'z-10 fixed fixed': true,
                   hidden: !isContextMenuOpen,
                 })}
               >
